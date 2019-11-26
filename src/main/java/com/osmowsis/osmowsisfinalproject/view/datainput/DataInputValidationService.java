@@ -1,6 +1,10 @@
 package com.osmowsis.osmowsisfinalproject.view.datainput;
 
-import org.springframework.stereotype.Component;
+import com.osmowsis.osmowsisfinalproject.constant.LawnConstant;
+import org.springframework.stereotype.Service;
+
+import java.util.HashSet;
+import java.util.Set;
 
 /**
  * Validation service responsible for validating the data input into the data screen
@@ -8,50 +12,59 @@ import org.springframework.stereotype.Component;
  * Created on 11/25/2019
  */
 
-@Component
+@Service
 public class DataInputValidationService
 {
-    // FIELDS
-    ///////////////////////////////////////////////////////////////////////////////////////////////////////////////////
-    private static final int MIN_X_WIDTH = 1;
-    private static final int MAX_X_WIDTH = 15;
-
-    private static final int MIN_Y_HEIGHT = 1;
-    private static final int MAX_Y_HEIGHT = 10;
-
     // PUBLIC METHODS
     ///////////////////////////////////////////////////////////////////////////////////////////////////////////////////
     /**
-     * Validated the X and Y dimensions that were input by the user
+     * Validate the X and Y dimensions that were input by the user
      *
-     * @param xDimensionStr - The X dimension for the lawn
-     * @param yDimensionStr - The Y dimension for the lawn
+     * @param xDimensionStr - The X dimension string for the lawn
+     * @param yDimensionStr - The Y dimension string for the lawn
      *
-     * @return - True if the dimensions are valid
+     * @return - A collection of the validation errors, an empty collection means no errors
      */
-    public boolean validateDimensionData(final String xDimensionStr,
+    public Set<DataInputError> validateDimensionData(final String xDimensionStr,
                                          final String yDimensionStr)
     {
-        boolean response = true;
+        Set<DataInputError> errors = new HashSet<>();
 
+        validateDimensionInternal(errors, xDimensionStr, DataInputError.INVALID_X_COORDINATE, LawnConstant.LAWN_MIN_X_WIDTH, LawnConstant.LAWN_MAX_X_WIDTH);
+        validateDimensionInternal(errors, yDimensionStr, DataInputError.INVALID_Y_COORDINATE, LawnConstant.LAWN_MIN_Y_HEIGHT, LawnConstant.LAWN_MAX_Y_HEIGHT);
+
+        return errors;
+    }
+
+    // PRIVATE METHODS
+    ///////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+    /**
+     * Validates the dimension and adds applicable errors if validation fails
+     *
+     * @param errors - The collection of errors
+     * @param dimensionStr - The dimension string to try to convert to a int
+     * @param error - The error to be added to the collection if the validation fails
+     * @param min - The minimum value that the dimension can be (inclusive)
+     * @param max - The maximum value that the dimension can be (inclusive)
+     */
+    private void validateDimensionInternal(final Set<DataInputError> errors,
+                                           final String dimensionStr,
+                                           final DataInputError error,
+                                           final int min,
+                                           final int max)
+    {
         try
         {
-            int xDimension = Integer.parseInt(xDimensionStr.trim());
-            int yDimension = Integer.parseInt(yDimensionStr.trim());
+            int dimension = Integer.parseInt(dimensionStr);
 
-            if(xDimension < MIN_X_WIDTH
-                    || xDimension > MAX_X_WIDTH
-                    || yDimension < MIN_Y_HEIGHT
-                    || yDimension > MAX_Y_HEIGHT)
+            if(dimension < min || dimension > max)
             {
-                response = false;
+                errors.add(error);
             }
         }
         catch(NumberFormatException e)
         {
-            response = false;
+            errors.add(error);
         }
-
-        return response;
     }
 }

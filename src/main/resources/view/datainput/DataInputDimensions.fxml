@@ -62,27 +62,27 @@
                 </Separator>
 
                 <!-- REGION HELPS VERTICALLY CENTER THE CONTENT IN THE VIEW -->
-                <Region prefHeight="80.0" prefWidth="500.0" />
+                <Region prefHeight="60.0" prefWidth="500.0" />
 
-                <!-- ___________________-->
-                <!-- X DIMENSIONS AREA  -->
-                <!-- ___________________-->
+                <!-- __________________-->
+                <!-- X DIMENSION AREA  -->
+                <!-- __________________-->
                 <HBox alignment="BOTTOM_CENTER">
                     <children>
                   <MaterialDesignIconView glyphName="COMPASS" rotate="45.0" size="5.0EM" styleClass="label-icon">
                      <HBox.margin>
                         <Insets right="15.0" />
                      </HBox.margin></MaterialDesignIconView>
-                        <VBox alignment="TOP_CENTER" prefWidth="200.0">
+                        <VBox alignment="TOP_CENTER" prefWidth="300.0">
                             <children>
-                                <Label text="Enter the X Dimension (Horizontal)" textFill="#6a6b6a">
+                                <Label text="Enter The Lawns X Dimension (Horizontal)" textFill="#6a6b6a">
                                     <font>
                                         <Font name="Ebrima" size="15.0" />
                                     </font>
                                 </Label>
                                 <JFXTextField alignment="CENTER" fx:id="xDimensionField">
                                     <font>
-                                        <Font name="Ebrima" size="18.0" />
+                                        <Font name="Ebrima" size="20.0" />
                                     </font>
                                 </JFXTextField>
                             </children>
@@ -93,25 +93,25 @@
                     </padding>
                 </HBox>
 
-                <!-- ___________________-->
-                <!-- Y DIMENSIONS AREA  -->
-                <!-- ___________________-->
+                <!-- __________________-->
+                <!-- Y DIMENSION AREA  -->
+                <!-- __________________-->
                 <HBox alignment="BOTTOM_CENTER" layoutX="10.0" layoutY="175.0">
                     <children>
                   <MaterialDesignIconView glyphName="COMPASS" rotate="135.0" size="5.0EM" styleClass="label-icon">
                      <HBox.margin>
                         <Insets right="15.0" />
                      </HBox.margin></MaterialDesignIconView>
-                        <VBox alignment="TOP_CENTER" prefWidth="200.0">
+                        <VBox alignment="TOP_CENTER" prefWidth="300.0">
                             <children>
-                                <Label text="Enter the Y Dimension (Vertical)" textFill="#6a6b6a">
+                                <Label text="Enter The Lawns Y Dimension (Vertical)" textFill="#6a6b6a">
                                     <font>
                                         <Font name="Ebrima" size="15.0" />
                                     </font>
                                 </Label>
                         <JFXTextField fx:id="yDimensionField" alignment="CENTER">
                            <font>
-                              <Font name="Ebrima" size="18.0" />
+                              <Font name="Ebrima" size="20.0" />
                            </font>
                         </JFXTextField>
                             </children>
@@ -120,27 +120,39 @@
                 </HBox>
 
                 <!-- _________________-->
-                <!-- ERROR TEXT AREA  -->
+                <!-- ERRORS CONTAINER -->
                 <!-- _________________-->
-                <HBox alignment="CENTER" prefWidth="200.0">
+                <HBox fx:id="errorContainer" alignment="CENTER" minHeight="50.0" styleClass="error-container" visible="false">
                     <children>
-                        <Label fx:id="loginErrorLabel" textFill="#d80f0f" visible="false">
-                            <font>
-                                <Font size="10.0" />
-                            </font>
+                  <VBox alignment="CENTER">
+                     <children>
+                         <Label text="The X Dimension is required and must be 1 ≤ n ≤ 15" textFill="#d80f0f" visible="false" fx:id="xDimensionErrorLabel">
+                           <font>
+                              <Font name="Ebrima" size="12.0" />
+                           </font>
+                           <VBox.margin>
+                              <Insets bottom="5.0" />
+                           </VBox.margin>
+                         </Label>
+                        <Label fx:id="yDimensionErrorLabel" text="The Y Dimension is required and must be 1 ≤ n ≤ 10" textFill="#d80f0f" visible="false">
+                           <font>
+                              <Font name="Ebrima" size="12.0" />
+                           </font>
                         </Label>
+                     </children>
+                  </VBox>
                     </children>
                     <VBox.margin>
-                        <Insets bottom="20.0" top="30.0" />
+                        <Insets bottom="22.0" left="90.0" right="90.0" top="22.0" />
                     </VBox.margin>
                 </HBox>
 
-                <!-- ___________________________-->
-                <!-- BACK AND NEXT BUTTON AREA  -->
-                <!-- ___________________________-->
+                <!-- ____________________-->
+                <!-- BACK / NEXT BUTTONS -->
+                <!-- ____________________-->
                 <HBox alignment="CENTER" prefWidth="200.0">
                     <children>
-                        <JFXButton fx:id="backBtn" onKeyPressed="#handleBackBtnKeyPress" onMouseClicked="#handleBackBtnClick" prefHeight="45.0" prefWidth="100.0" styleClass="main-btn" text="Back">
+                        <JFXButton fx:id="backBtn" onKeyPressed="#handleBackBtnKeyPress" onMouseClicked="#handleBackBtnClick" prefHeight="60.0" prefWidth="125.0" styleClass="main-btn" text="Back">
                             <HBox.margin>
                                 <Insets right="30.0" />
                             </HBox.margin>
@@ -151,7 +163,7 @@
                                 <Cursor fx:constant="HAND" />
                             </cursor>
                         </JFXButton>
-                        <JFXButton fx:id="nextBtn" layoutX="10.0" layoutY="10.0" onKeyPressed="#handleNextBtnKeyPress" onMouseClicked="#handleNextBtnClick" prefHeight="45.0" prefWidth="100.0" styleClass="main-btn" text="Next">
+                        <JFXButton fx:id="nextBtn" layoutX="10.0" layoutY="10.0" onKeyPressed="#handleNextBtnKeyPress" onMouseClicked="#handleNextBtnClick" prefHeight="60.0" prefWidth="125.0" styleClass="main-btn" text="Next">
                             <font>
                                 <Font name="Roboto Light" size="18.0" />
                             </font>

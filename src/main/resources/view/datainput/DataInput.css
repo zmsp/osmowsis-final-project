@@ -18,7 +18,7 @@
 /* FOR SEARCH TEXT FIELDS */
 .text-field{
     -fx-prompt-text-fill: #999999;
-    -jfx-focus-color: #2F5F00;
+    -jfx-focus-color: #FEFDAF;
     -jfx-unfocus-color: #22282f;
     -fx-text-fill: #F5F5F5;
 }
@@ -34,4 +34,10 @@
     -fx-border-color: #FEFDAF;
     -fx-border-radius: 10px;
     -fx-text-fill: #FEFDAF;
+}
+
+.error-container{
+    -fx-border-width: 1px;
+    -fx-border-radius: 10px;
+    -fx-border-color: #d80f0f;
 }
