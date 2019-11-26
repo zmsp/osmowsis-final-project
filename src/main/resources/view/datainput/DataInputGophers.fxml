@@ -4,7 +4,7 @@
 
 <AnchorPane xmlns="http://javafx.com/javafx"
             xmlns:fx="http://javafx.com/fxml"
-            fx:controller="com.osmowsis.osmowsisfinalproject.view.datainput.DataInputMowersController"
+            fx:controller="com.osmowsis.osmowsisfinalproject.view.datainput.DataInputGophersController"
             prefHeight="500.0" prefWidth="500.0">
 
 </AnchorPane>

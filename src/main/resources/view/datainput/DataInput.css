@@ -1,5 +1,12 @@
+/* THE ENTIRE CONTAINER */
 .data-input-container{
     -fx-background-color: #2C2C37;
+}
+
+
+/* THE HEADER AREA */
+.logo-icon{
+    -fx-fill: #2F5F00;
 }
 
 .separator .line{
@@ -7,15 +14,14 @@
     -fx-border-width: 1px;
 }
 
-.logo-icon{
-    -fx-fill: #2F5F00;
-}
 
+/* ICONS FOR LABELS */
 .label-icon{
     -fx-fill: #FEFDAF;
 }
 
-/* FOR SEARCH TEXT FIELDS */
+
+/* TEXT FIELDS */
 .text-field{
     -fx-prompt-text-fill: #999999;
     -jfx-focus-color: #FEFDAF;
@@ -27,6 +33,15 @@
     -fx-prompt-text-fill: transparent;
 }
 
+
+/* LIST VIEWS */
+.jfx-list-view, .list-cell{
+    -fx-background-color: #1E1E26;
+    -fx-background-radius: 2px;
+    -fx-padding: 0px 2px;
+}
+
+/* STANDARD BUTTONS */
 .main-btn{
     -fx-background-color: transparent;
     -fx-background-radius: 10px;
@@ -36,6 +51,8 @@
     -fx-text-fill: #FEFDAF;
 }
 
+
+/* VALIDATION ERROR CONTAINERS */
 .error-container{
     -fx-border-width: 1px;
     -fx-border-radius: 10px;

@@ -19,7 +19,7 @@ import java.util.ResourceBundle;
 import java.util.Set;
 
 /**
- * Controller for the Data Input view that is responsible for accepting the lawns X and Y coordinate
+ * Controller for the Data Input view that is responsible for accepting the lawns X and Y dimensions
  *
  * Created on 11/25/2019
  */

@@ -1,10 +1,127 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
-<?import javafx.scene.layout.*?>
+<?import com.jfoenix.controls.JFXButton?>
+<?import com.jfoenix.controls.JFXListView?>
+<?import de.jensd.fx.glyphs.fontawesome.FontAwesomeIconView?>
+<?import java.net.URL?>
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.Cursor?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.Separator?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.HBox?>
+<?import javafx.scene.layout.Region?>
+<?import javafx.scene.layout.VBox?>
+<?import javafx.scene.text.Font?>
 
-<AnchorPane xmlns="http://javafx.com/javafx"
-            xmlns:fx="http://javafx.com/fxml"
-            fx:controller="com.osmowsis.osmowsisfinalproject.view.datainput.DataInputGophersController"
-            prefHeight="500.0" prefWidth="500.0">
+<AnchorPane prefHeight="500.0" prefWidth="500.0" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.osmowsis.osmowsisfinalproject.view.datainput.DataInputMowersController">
 
+    <children>
+        <VBox alignment="TOP_CENTER" layoutY="-6.0" prefHeight="500.0" prefWidth="500.0" styleClass="data-input-container" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+            <children>
+
+                <!-- _____________________-->
+                <!-- WELCOME HEADER AREA  -->
+                <!-- _____________________-->
+                <HBox alignment="CENTER_LEFT" prefWidth="500.0">
+                    <children>
+                        <Label text="Osmowsis" textFill="#b1b3b2">
+                            <font>
+                                <Font name="Ebrima Bold" size="36.0" />
+                            </font>
+                            <HBox.margin>
+                                <Insets right="10.0" />
+                            </HBox.margin>
+                        </Label>
+                        <Separator orientation="VERTICAL" />
+                        <Label layoutX="10.0" layoutY="10.0" text="Mowers" textFill="#b1b3b2">
+                            <font>
+                                <Font name="Roboto Light" size="36.0" />
+                            </font>
+                            <HBox.margin>
+                                <Insets left="10.0" right="10.0" />
+                            </HBox.margin>
+                        </Label>
+                        <Region HBox.hgrow="ALWAYS" />
+                        <FontAwesomeIconView glyphName="LEAF" size="3.6em" styleClass="logo-icon">
+                            <HBox.margin>
+                                <Insets right="10.0" top="1.0" />
+                            </HBox.margin>
+                        </FontAwesomeIconView>
+                    </children>
+                    <VBox.margin>
+                        <Insets left="20.0" right="10.0" top="20.0" />
+                    </VBox.margin>
+                </HBox>
+
+                <Separator prefWidth="200.0">
+                    <VBox.margin>
+                        <Insets left="10.0" right="10.0" top="15.0" />
+                    </VBox.margin>
+                </Separator>
+
+                <!-- _________________________-->
+                <!-- LIST VIEW FOR THE MOWERS -->
+                <!-- _________________________-->
+                <JFXListView>
+                   <VBox.margin>
+                      <Insets bottom="20.0" left="12.0" right="12.0" top="20.0" />
+                   </VBox.margin>
+                </JFXListView>
+
+                <!-- _________________________-->
+                <!-- BACK / ADD /NEXT BUTTONS -->
+                <!-- _________________________-->
+                <HBox alignment="CENTER" maxHeight="60.0" minHeight="60.0" prefHeight="60.0" prefWidth="200.0">
+                    <children>
+                  <JFXButton fx:id="backBtn1" layoutX="120.0" layoutY="10.0" onKeyPressed="#handleBackBtnKeyPress" onMouseClicked="#handleBackBtnClick" prefHeight="60.0" prefWidth="125.0" styleClass="main-btn" text="Back">
+                     <font>
+                        <Font name="Roboto Light" size="18.0" />
+                     </font>
+                     <cursor>
+                        <Cursor fx:constant="HAND" />
+                     </cursor>
+                     <HBox.margin>
+                        <Insets right="30.0" />
+                     </HBox.margin>
+                  </JFXButton>
+                        <JFXButton fx:id="backBtn" onKeyPressed="#handleAddMowerKeyPress" onMouseClicked="#handleAddMowerBtnClick" prefHeight="60.0" prefWidth="125.0" styleClass="main-btn" text="Add Mower">
+                            <HBox.margin>
+                                <Insets right="30.0" />
+                            </HBox.margin>
+                            <font>
+                                <Font name="Roboto Light" size="18.0" />
+                            </font>
+                            <cursor>
+                                <Cursor fx:constant="HAND" />
+                            </cursor>
+                        </JFXButton>
+                        <JFXButton fx:id="nextBtn" layoutX="10.0" layoutY="10.0" onKeyPressed="#handleNextBtnKeyPress" onMouseClicked="#handleNextBtnClick" prefHeight="60.0" prefWidth="125.0" styleClass="main-btn" text="Next">
+                            <font>
+                                <Font name="Roboto Light" size="18.0" />
+                            </font>
+                            <cursor>
+                                <Cursor fx:constant="HAND" />
+                            </cursor>
+                            <HBox.margin>
+                                <Insets />
+                            </HBox.margin>
+                        </JFXButton>
+                    </children>
+                    <opaqueInsets>
+                        <Insets />
+                    </opaqueInsets>
+                    <VBox.margin>
+                        <Insets bottom="25.0" />
+                    </VBox.margin>
+                </HBox>
+                <Region prefWidth="500.0" VBox.vgrow="ALWAYS" />
+            </children>
+        </VBox>
+    </children>
+
+    <!-- CSS FOR DATA INPUT VIEWS -->
+    <stylesheets>
+        <URL value="@DataInput.css" />
+    </stylesheets>
 </AnchorPane>
