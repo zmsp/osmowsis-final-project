@@ -67,7 +67,7 @@
                 <!-- _____________________________________-->
                 <HBox alignment="BOTTOM_CENTER">
                     <children>
-                        <JFXButton alignment="CENTER_LEFT" focusTraversable="false" graphicTextGap="50.0" prefHeight="70.0" prefWidth="300.0" styleClass="main-btn" text="Import File" wrapText="true">
+                        <JFXButton alignment="CENTER_LEFT" focusTraversable="false" graphicTextGap="50.0" prefHeight="70.0" prefWidth="300.0" styleClass="main-btn" text="Import File" wrapText="true" onMouseClicked="#handleImportFileBtnClick">
                             <cursor>
                                 <Cursor fx:constant="HAND" />
                             </cursor>
@@ -88,7 +88,7 @@
                 </HBox>
                 <HBox alignment="BOTTOM_CENTER">
                    <children>
-                      <JFXButton alignment="CENTER_LEFT" focusTraversable="false" graphicTextGap="50.0" prefHeight="70.0" prefWidth="300.0" styleClass="main-btn" text="Input Data" wrapText="true">
+                      <JFXButton alignment="CENTER_LEFT" focusTraversable="false" graphicTextGap="50.0" prefHeight="70.0" prefWidth="300.0" styleClass="main-btn" text="Input Data" wrapText="true" onMouseClicked="#handleInputDataButtonClick">
                          <cursor>
                             <Cursor fx:constant="HAND" />
                          </cursor>
@@ -109,7 +109,7 @@
                 </HBox>
                 <HBox alignment="BOTTOM_CENTER">
                    <children>
-                      <JFXButton alignment="CENTER_LEFT" focusTraversable="false" graphicTextGap="40.0" prefHeight="70.0" prefWidth="300.0" styleClass="main-btn" text="Generate Data" wrapText="true">
+                      <JFXButton alignment="CENTER_LEFT" focusTraversable="false" graphicTextGap="40.0" prefHeight="70.0" prefWidth="300.0" styleClass="main-btn" text="Generate Data" wrapText="true" onMouseClicked="#handleGenerateDataButtonClick">
                          <cursor>
                             <Cursor fx:constant="HAND" />
                          </cursor>

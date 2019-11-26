@@ -1,0 +1,37 @@
+.data-input-container{
+    -fx-background-color: #2C2C37;
+}
+
+.separator .line{
+    -fx-border-color: #FEFDAF;
+    -fx-border-width: 1px;
+}
+
+.logo-icon{
+    -fx-fill: #2F5F00;
+}
+
+.label-icon{
+    -fx-fill: #FEFDAF;
+}
+
+/* FOR SEARCH TEXT FIELDS */
+.text-field{
+    -fx-prompt-text-fill: #999999;
+    -jfx-focus-color: #2F5F00;
+    -jfx-unfocus-color: #22282f;
+    -fx-text-fill: #F5F5F5;
+}
+
+.text-field:focused{
+    -fx-prompt-text-fill: transparent;
+}
+
+.main-btn{
+    -fx-background-color: transparent;
+    -fx-background-radius: 10px;
+    -fx-border-width: 2px;
+    -fx-border-color: #FEFDAF;
+    -fx-border-radius: 10px;
+    -fx-text-fill: #FEFDAF;
+}

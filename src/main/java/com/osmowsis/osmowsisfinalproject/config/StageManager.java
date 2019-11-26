@@ -1,6 +1,5 @@
 package com.osmowsis.osmowsisfinalproject.config;
 
-
 import com.osmowsis.osmowsisfinalproject.view.FXMLView;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
