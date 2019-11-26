@@ -1,0 +1,139 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import com.jfoenix.controls.JFXButton?>
+<?import de.jensd.fx.glyphs.fontawesome.FontAwesomeIconView?>
+<?import java.net.URL?>
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.Cursor?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.Separator?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.HBox?>
+<?import javafx.scene.layout.Region?>
+<?import javafx.scene.layout.VBox?>
+<?import javafx.scene.text.Font?>
+
+<AnchorPane prefHeight="500.0" prefWidth="500.0" styleClass="welcome-container" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.osmowsis.osmowsisfinalproject.view.welcome.WelcomeController">
+
+    <children>
+        <VBox layoutY="-6.0" prefHeight="500.0" prefWidth="500.0" styleClass="welcome-container" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+            <children>
+
+                <!-- _____________________-->
+                <!-- WELCOME HEADER AREA  -->
+                <!-- _____________________-->
+                <HBox prefWidth="500.0">
+                    <children>
+                        <Label text="Osmowsis" textFill="#b1b3b2">
+                            <font>
+                                <Font name="Ebrima Bold" size="36.0" />
+                            </font>
+                            <HBox.margin>
+                                <Insets right="10.0" />
+                            </HBox.margin>
+                        </Label>
+                        <Separator orientation="VERTICAL" />
+                        <Label layoutX="10.0" layoutY="10.0" text="Welcome" textFill="#b1b3b2">
+                            <font>
+                                <Font name="Roboto Light" size="36.0" />
+                            </font>
+                            <HBox.margin>
+                                <Insets left="10.0" right="10.0" />
+                            </HBox.margin>
+                        </Label>
+                        <Region HBox.hgrow="ALWAYS" />
+                        <FontAwesomeIconView glyphName="LEAF" size="3.6em" styleClass="logo-icon">
+                            <HBox.margin>
+                                <Insets right="10.0" top="1.0" />
+                            </HBox.margin>
+                        </FontAwesomeIconView>
+                    </children>
+                    <VBox.margin>
+                        <Insets left="20.0" right="10.0" top="20.0" />
+                    </VBox.margin>
+                </HBox>
+
+                <Separator prefWidth="200.0">
+                    <VBox.margin>
+                        <Insets left="10.0" right="10.0" top="15.0" />
+                    </VBox.margin>
+                </Separator>
+
+                <!-- REGION HELPS VERTICALLY CENTER THE CONTENT IN THE VIEW -->
+                <Region prefHeight="50.0" prefWidth="500.0" />
+
+                <!-- _____________________________________-->
+                <!-- IMPORT / INPUT / GENERATE DATA AREA  -->
+                <!-- _____________________________________-->
+                <HBox alignment="BOTTOM_CENTER">
+                    <children>
+                        <JFXButton alignment="CENTER_LEFT" focusTraversable="false" graphicTextGap="50.0" prefHeight="70.0" prefWidth="300.0" styleClass="main-btn" text="Import File" wrapText="true">
+                            <cursor>
+                                <Cursor fx:constant="HAND" />
+                            </cursor>
+                            <font>
+                                <Font name="Roboto Light" size="22.0" />
+                            </font>
+                            <HBox.margin>
+                                <Insets right="5.0" />
+                            </HBox.margin>
+                     <graphic>
+                        <FontAwesomeIconView fill="#fefdaf" glyphName="DOWNLOAD" size="3.0em" />
+                     </graphic>
+                        </JFXButton>
+                    </children>
+                    <padding>
+                        <Insets bottom="45.0" />
+                    </padding>
+                </HBox>
+                <HBox alignment="BOTTOM_CENTER">
+                   <children>
+                      <JFXButton alignment="CENTER_LEFT" focusTraversable="false" graphicTextGap="50.0" prefHeight="70.0" prefWidth="300.0" styleClass="main-btn" text="Input Data" wrapText="true">
+                         <cursor>
+                            <Cursor fx:constant="HAND" />
+                         </cursor>
+                         <font>
+                            <Font name="Roboto Light" size="22.0" />
+                         </font>
+                         <HBox.margin>
+                            <Insets right="5.0" />
+                         </HBox.margin>
+                         <graphic>
+                            <FontAwesomeIconView fill="#fefdaf" glyphName="KEYBOARD_ALT" size="3.0em" />
+                         </graphic>
+                      </JFXButton>
+                   </children>
+                   <padding>
+                      <Insets bottom="45.0" />
+                   </padding>
+                </HBox>
+                <HBox alignment="BOTTOM_CENTER">
+                   <children>
+                      <JFXButton alignment="CENTER_LEFT" focusTraversable="false" graphicTextGap="40.0" prefHeight="70.0" prefWidth="300.0" styleClass="main-btn" text="Generate Data" wrapText="true">
+                         <cursor>
+                            <Cursor fx:constant="HAND" />
+                         </cursor>
+                         <font>
+                            <Font name="Roboto Light" size="22.0" />
+                         </font>
+                         <HBox.margin>
+                            <Insets right="5.0" />
+                         </HBox.margin>
+                         <graphic>
+                            <FontAwesomeIconView fill="#fefdaf" glyphName="LIGHTBULB_ALT" size="3.0em" textAlignment="CENTER" wrappingWidth="35.0" />
+                         </graphic>
+                      </JFXButton>
+                   </children>
+                   <padding>
+                      <Insets bottom="45.0" />
+                   </padding>
+                </HBox>
+            </children>
+        </VBox>
+    </children>
+
+    <!-- CSS FOR THE WELCOME VIEW -->
+    <stylesheets>
+        <URL value="@Welcome.css" />
+    </stylesheets>
+</AnchorPane>
