@@ -1,4 +1,4 @@
-package com.osmowsis.osmowsisfinalproject.view.datainput;
+package com.osmowsis.osmowsisfinalproject.view.datainput.validation;
 
 import com.osmowsis.osmowsisfinalproject.constant.LawnConstant;
 import org.springframework.stereotype.Service;
@@ -26,7 +26,7 @@ public class DataInputValidationService
      * @return - A collection of the validation errors, an empty collection means no errors
      */
     public Set<DataInputError> validateDimensionData(final String xDimensionStr,
-                                         final String yDimensionStr)
+                                                     final String yDimensionStr)
     {
         Set<DataInputError> errors = new HashSet<>();
 

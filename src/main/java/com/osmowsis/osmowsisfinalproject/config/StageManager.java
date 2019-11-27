@@ -4,6 +4,7 @@ import com.osmowsis.osmowsisfinalproject.view.FXMLView;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.stage.Stage;
+import lombok.Getter;
 import lombok.extern.slf4j.Slf4j;
 
 import java.util.Objects;
@@ -19,7 +20,9 @@ public class StageManager
 {
     // FIELDS
     ///////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+    @Getter
     private final Stage primaryStage;
+
     private final SpringFXMLLoader springFXMLLoader;
 
     private double xOffset = 0;

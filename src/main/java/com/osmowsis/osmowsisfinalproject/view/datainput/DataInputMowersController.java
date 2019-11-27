@@ -1,12 +1,23 @@
 package com.osmowsis.osmowsisfinalproject.view.datainput;
 
+import com.jfoenix.controls.JFXListView;
 import com.osmowsis.osmowsisfinalproject.config.StageManager;
+import com.osmowsis.osmowsisfinalproject.model.SimulationDataModel;
+import com.osmowsis.osmowsisfinalproject.mower.Mower;
+import com.osmowsis.osmowsisfinalproject.mower.Mower2;
 import com.osmowsis.osmowsisfinalproject.view.FXMLView;
+import com.osmowsis.osmowsisfinalproject.view.datainput.cell.DataInputMowerCell;
+import javafx.fxml.FXML;
+import javafx.fxml.Initializable;
 import javafx.scene.input.KeyCode;
 import javafx.scene.input.KeyEvent;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.beans.factory.annotation.Lookup;
 import org.springframework.context.annotation.Lazy;
 import org.springframework.stereotype.Controller;
+
+import java.net.URL;
+import java.util.ResourceBundle;
 
 /**
  * Controller for the view for adding mower info on the data input flow
@@ -15,19 +26,36 @@ import org.springframework.stereotype.Controller;
  */
 
 @Controller
-public class DataInputMowersController
+public class DataInputMowersController implements Initializable
 {
     // FIELDS
     ///////////////////////////////////////////////////////////////////////////////////////////////////////////////////
     private final StageManager stageManager;
+    private final SimulationDataModel simulationDataModel;
+
+    @FXML
+    private JFXListView<Mower2> dataInputMowersListView;
 
     // CONSTRUCTORS
     ///////////////////////////////////////////////////////////////////////////////////////////////////////////////////
     @Autowired
-    public DataInputMowersController(@Lazy final StageManager stageManager)
+    public DataInputMowersController(@Lazy final StageManager stageManager,
+                                     final SimulationDataModel simulationDataModel)
     {
         this.stageManager = stageManager;
+        this.simulationDataModel = simulationDataModel;
     }
+
+    // INIT METHODS
+    ///////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+    @Override
+    public void initialize(URL location, ResourceBundle resources)
+    {
+        // BINDS THE MOWER LIST VIEW TO THE ITEMS IN THE MODEL
+        dataInputMowersListView.setItems(simulationDataModel.getMowers());
+        dataInputMowersListView.setCellFactory(column -> getDataInputMowerCell());
+    }
+
 
     // PUBLIC METHODS
     ///////////////////////////////////////////////////////////////////////////////////////////////////////////////////
@@ -87,4 +115,14 @@ public class DataInputMowersController
     {
         // TODO: PERFORM VALIDATION AND THEN MOVE ON TO THE NEXT PAGE
     }
+
+    // SPRING LOOKUPS
+    ///////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+    /**
+     * Spring magic for handling prototype scoped tings : )
+     *
+     * @return - A new instance of the Data Input Mower Cell
+     */
+    @Lookup
+    DataInputMowerCell getDataInputMowerCell(){ return null; }
 }

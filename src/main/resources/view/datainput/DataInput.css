@@ -38,7 +38,7 @@
 .jfx-list-view, .list-cell{
     -fx-background-color: #1E1E26;
     -fx-background-radius: 2px;
-    -fx-padding: 0px 2px;
+    -fx-padding: 0px;
 }
 
 /* STANDARD BUTTONS */

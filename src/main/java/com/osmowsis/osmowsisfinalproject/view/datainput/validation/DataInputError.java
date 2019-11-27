@@ -1,4 +1,4 @@
-package com.osmowsis.osmowsisfinalproject.view.datainput;
+package com.osmowsis.osmowsisfinalproject.view.datainput.validation;
 
 /**
  * Errors that can occur during data input, which are used to display proper validation messages

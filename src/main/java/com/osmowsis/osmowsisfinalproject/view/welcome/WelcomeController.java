@@ -2,10 +2,13 @@ package com.osmowsis.osmowsisfinalproject.view.welcome;
 
 import com.osmowsis.osmowsisfinalproject.config.StageManager;
 import com.osmowsis.osmowsisfinalproject.view.FXMLView;
+import javafx.stage.FileChooser;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Lazy;
 import org.springframework.stereotype.Controller;
+
+import java.io.File;
 
 /**
  * The controller that controls the welcome.fxml view
@@ -36,6 +39,15 @@ public class WelcomeController
      */
     public void handleImportFileBtnClick()
     {
+        FileChooser fileChooser = new FileChooser();
+        fileChooser.getExtensionFilters().add(new FileChooser.ExtensionFilter("Text Files", "*.txt", "*.dat", "*.csv"));
+
+        File selectedFile = fileChooser.showOpenDialog(stageManager.getPrimaryStage());
+
+        // TODO: PASS THE FILE TO THE PARSING UTILITY AND USE THAT TO IMPORT THE DATA
+
+        // TODO: SHOW THE VIEW FOR THE MAIN SIMULATION VIEW
+
         log.info("The import file button was clicked");
     }
 
@@ -44,8 +56,6 @@ public class WelcomeController
      */
     public void handleInputDataButtonClick()
     {
-        log.info("The input data button was clicked");
-
         stageManager.switchScene(FXMLView.DATA_INPUT_DIMENSIONS);
     }
 
@@ -54,6 +64,12 @@ public class WelcomeController
      */
     public void handleGenerateDataButtonClick()
     {
+        // TODO: CREATE A SERVICE TO GENERATE RANDOM DATA
+
+        // TODO: GENERATE A RANDOM SCENARIO
+
+        // TODO: SHOW THE THE VIEW FOR THE MAIN SIMULATION
+
         log.info("The generate random button data button was clicked");
     }
 }

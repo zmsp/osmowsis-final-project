@@ -14,7 +14,8 @@ public enum FXMLView
     ///////////////////////////////////////////////////////////////////////////////////////////////////////////////////
     WELCOME("/view/welcome/Welcome.fxml"),
     DATA_INPUT_DIMENSIONS("/view/datainput/DataInputDimensions.fxml"),
-    DATA_INPUT_MOWERS("/view/datainput/DataInputMowers.fxml");
+    DATA_INPUT_MOWERS("/view/datainput/DataInputMowers.fxml"),
+    DATA_INPUT_MOWER_CELL("/view/datainput/cell/DataInputMowerCell.fxml");
 
     // FIELDS
     ///////////////////////////////////////////////////////////////////////////////////////////////////////////////////

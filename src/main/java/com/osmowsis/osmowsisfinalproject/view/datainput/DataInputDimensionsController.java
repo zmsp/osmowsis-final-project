@@ -2,8 +2,11 @@ package com.osmowsis.osmowsisfinalproject.view.datainput;
 
 import com.jfoenix.controls.JFXTextField;
 import com.osmowsis.osmowsisfinalproject.config.StageManager;
-import com.osmowsis.osmowsisfinalproject.model.LawnDataModel;
+import com.osmowsis.osmowsisfinalproject.constant.Direction;
+import com.osmowsis.osmowsisfinalproject.model.SimulationDataModel;
 import com.osmowsis.osmowsisfinalproject.view.FXMLView;
+import com.osmowsis.osmowsisfinalproject.view.datainput.validation.DataInputError;
+import com.osmowsis.osmowsisfinalproject.view.datainput.validation.DataInputValidationService;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 import javafx.scene.control.Label;
@@ -31,7 +34,7 @@ public class DataInputDimensionsController implements Initializable
     ///////////////////////////////////////////////////////////////////////////////////////////////////////////////////
     private final StageManager stageManager;
     private final DataInputValidationService dataInputValidationService;
-    private final LawnDataModel lawnDataModel;
+    private final SimulationDataModel simulationDataModel;
 
     @FXML
     private JFXTextField xDimensionField;
@@ -53,11 +56,11 @@ public class DataInputDimensionsController implements Initializable
     @Autowired
     public DataInputDimensionsController(@Lazy final StageManager stageManager,
                                          final DataInputValidationService dataInputValidationService,
-                                         final LawnDataModel lawnDataModel)
+                                         final SimulationDataModel simulationDataModel)
     {
         this.stageManager = stageManager;
         this.dataInputValidationService = dataInputValidationService;
-        this.lawnDataModel = lawnDataModel;
+        this.simulationDataModel = simulationDataModel;
     }
 
     // INIT METHODS
@@ -119,7 +122,12 @@ public class DataInputDimensionsController implements Initializable
         if(errors.isEmpty())
         {
             // INTEGER PARSING CANNOT THROW NFE BECAUSE THE VALIDATION SERVICE ALREADY CHECKED FOR IT
-            lawnDataModel.updateLawnDimensions(Integer.parseInt(xDimensionStr), Integer.parseInt(yDimensionStr));
+            simulationDataModel.updateLawnDimensions(Integer.parseInt(xDimensionStr), Integer.parseInt(yDimensionStr));
+
+            // TODO: REMOVE THIS AFTER, JUST TESTING THAT THIS WORKS PRIOR TO ADDING MODAL
+            simulationDataModel.addNewMowerToModel(2, 3, Direction.SOUTH, false);
+            simulationDataModel.addNewMowerToModel(2, 3, Direction.NORTH, false);
+            simulationDataModel.addNewMowerToModel(2, 3, Direction.NORTHWEST, false);
 
             stageManager.switchScene(FXMLView.DATA_INPUT_MOWERS);
         }

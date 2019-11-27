@@ -1,0 +1,76 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import de.jensd.fx.glyphs.fontawesome.FontAwesomeIconView?>
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.layout.HBox?>
+<?import javafx.scene.layout.Region?>
+<?import javafx.scene.text.Font?>
+
+<HBox fx:id="dataInputMowerCell" alignment="CENTER_LEFT" maxHeight="36.0" minHeight="36.0" prefHeight="36.0" prefWidth="466.0" styleClass="cell-container" stylesheets="@DataInputMowerCell.css" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1">
+   <children>
+
+      <!-- ___________-->
+      <!-- POWER ICON -->
+      <!-- ___________-->
+      <FontAwesomeIconView fx:id="powerIcon" fill="LIME" glyphName="POWER_OFF" size="2.0em">
+         <HBox.margin>
+            <Insets left="8.0" right="15.0" top="2.0" />
+         </HBox.margin>
+      </FontAwesomeIconView>
+
+      <Region prefWidth="5.0" />
+
+      <!-- ___________-->
+      <!-- MOWER NAME -->
+      <!-- ___________-->
+      <Label fx:id="mowerName" text="Mower" textFill="#b1b3b2">
+         <font>
+            <Font name="Roboto Light" size="18.0" />
+         </font>
+         <HBox.margin>
+            <Insets right="15.0" />
+         </HBox.margin>
+      </Label>
+
+      <!-- ________________-->
+      <!-- BATTERY SECTION -->
+      <!-- ________________-->
+      <FontAwesomeIconView fx:id="batteryIcon" fill="#fefdaf" glyphName="BATTERY_FULL" layoutX="18.0" layoutY="40.0" size="1.4em">
+         <HBox.margin>
+            <Insets right="5.0" top="2.0" />
+         </HBox.margin>
+      </FontAwesomeIconView>
+
+      <Label fx:id="batteryEnergyLabel" text="100" textFill="#b1b3b2">
+         <font>
+            <Font name="Ebrima" size="13.0" />
+         </font>
+         <HBox.margin>
+            <Insets right="5.0" top="2.0" />
+         </HBox.margin>
+         <padding>
+            <Insets bottom="2.0" />
+         </padding>
+      </Label>
+
+      <Region HBox.hgrow="ALWAYS" />
+
+      <!-- __________________-->
+      <!-- DIRECTION SECTION -->
+      <!-- __________________-->
+      <Label fx:id="directionAbbreviation" text="N" textFill="#b1b3b2">
+         <font>
+            <Font name="Roboto Light" size="18.0" />
+         </font>
+         <HBox.margin>
+            <Insets right="3.0" />
+         </HBox.margin>
+      </Label>
+      <FontAwesomeIconView fx:id="directionIcon" fill="#fefdaf" glyphName="ARROW_UP" size="1.5em">
+         <HBox.margin>
+            <Insets right="8.0" />
+         </HBox.margin>
+      </FontAwesomeIconView>
+   </children>
+</HBox>
