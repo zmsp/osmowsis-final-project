@@ -1,7 +1,7 @@
 package com.osmowsis.osmowsisfinalproject;
 
 import com.osmowsis.osmowsisfinalproject.config.StageManager;
-import com.osmowsis.osmowsisfinalproject.view.FXMLView;
+import com.osmowsis.osmowsisfinalproject.constant.FXMLView;
 import javafx.application.Application;
 import javafx.stage.Stage;
 import javafx.stage.StageStyle;

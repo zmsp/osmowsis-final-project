@@ -3,9 +3,9 @@ package com.osmowsis.osmowsisfinalproject.model;
 import com.osmowsis.osmowsisfinalproject.constant.Direction;
 import com.osmowsis.osmowsisfinalproject.constant.LawnSquareContent;
 import com.osmowsis.osmowsisfinalproject.constant.SimulationRiskProfile;
-import com.osmowsis.osmowsisfinalproject.gopher.Gopher;
-import com.osmowsis.osmowsisfinalproject.lawn.LawnSquare;
-import com.osmowsis.osmowsisfinalproject.mower.Mower2;
+import com.osmowsis.osmowsisfinalproject.pojo.Gopher;
+import com.osmowsis.osmowsisfinalproject.pojo.LawnSquare;
+import com.osmowsis.osmowsisfinalproject.pojo.Mower2;
 import javafx.beans.property.SimpleIntegerProperty;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
@@ -48,6 +48,7 @@ public class SimulationDataModel implements BaseDataModel
 
     private ObservableList<LawnSquare> lawnSquares;
 
+    @Getter
     private ObservableList<Gopher> gophers;
 
     // CONSTRUCTORS
@@ -189,6 +190,8 @@ public class SimulationDataModel implements BaseDataModel
      */
     public void addNewGopherToModel(final Gopher gopher)
     {
+        gopher.setGopherNumber(gophers.size());
+
         gophers.add(gopher);
 
         LawnSquare lawnSquare = getLawnSquareByCoordinates(gopher.getXCoordinate(), gopher.getYCoordinate());

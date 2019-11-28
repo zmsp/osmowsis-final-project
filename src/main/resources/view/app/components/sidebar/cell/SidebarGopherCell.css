@@ -1,0 +1,14 @@
+.cell-container{
+    -fx-background-color: #1E1E26;
+}
+
+.coordinate-container{
+    -fx-background-color: transparent;
+    -fx-border-radius: 7px;
+    -fx-border-width: 2px;
+    -fx-border-color: #FEFDAF;
+}
+
+.main-label{
+    -fx-text-fill: #b1b3b2;
+}

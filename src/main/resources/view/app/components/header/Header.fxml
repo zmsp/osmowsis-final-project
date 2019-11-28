@@ -1,0 +1,68 @@
+<?import javafx.scene.layout.Pane?>
+<?import javafx.scene.layout.StackPane?>
+<?import javafx.scene.layout.VBox?>
+<?import javafx.scene.layout.HBox?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.text.Font?>
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.control.Separator?>
+<?import com.jfoenix.controls.JFXButton?>
+<?import de.jensd.fx.glyphs.fontawesome.FontAwesomeIconView?>
+<?import java.net.URL?>
+<Pane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefWidth="900.0" styleClass="header-container" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.osmowsis.osmowsisfinalproject.view.controller.HeaderController">
+
+    <children>
+        <StackPane>
+            <children>
+                <VBox prefWidth="900.0">
+                    <children>
+                        <HBox alignment="CENTER_LEFT" prefHeight="60.0">
+                            <children>
+                                <Label fx:id="headerLabel" text="External Account Settings" textFill="#242a31">
+                                    <font>
+                                        <Font name="Roboto Light" size="20.0" />
+                                    </font>
+                                </Label>
+                            </children>
+                            <opaqueInsets>
+                                <Insets />
+                            </opaqueInsets>
+                            <VBox.margin>
+                                <Insets left="10.0" />
+                            </VBox.margin>
+                        </HBox>
+                        <Separator styleClass="main-separator">
+                            <VBox.margin>
+                                <Insets left="3.0" right="3.0" />
+                            </VBox.margin>
+                        </Separator>
+                    </children>
+                </VBox>
+                <HBox alignment="TOP_RIGHT">
+                    <children>
+                        <JFXButton focusTraversable="false" onMouseClicked="#handleMinimizeBtnClick" prefHeight="35.0" prefWidth="35.0" ripplerFill="#969696" styleClass="minimize-btn" text="">
+                            <graphic>
+                                <FontAwesomeIconView glyphName="MINUS" size="1.5em" />
+                            </graphic>
+                            <HBox.margin>
+                                <Insets right="5.0" top="2.0" />
+                            </HBox.margin>
+                        </JFXButton>
+                        <JFXButton focusTraversable="false" onMouseClicked="#handleExitBtnClick" prefHeight="35.0" prefWidth="35.0" ripplerFill="#3a3a3a" styleClass="exit-btn" text="">
+                            <graphic>
+                                <FontAwesomeIconView glyphName="TIMES" size="1.5em" styleClass="exit-icon" />
+                            </graphic>
+                            <HBox.margin>
+                                <Insets right="2.0" top="2.0" />
+                            </HBox.margin>
+                        </JFXButton>
+                    </children>
+                </HBox>
+            </children>
+        </StackPane>
+    </children>
+
+    <stylesheets>
+        <URL value="@Header.css" />
+    </stylesheets>
+</Pane>

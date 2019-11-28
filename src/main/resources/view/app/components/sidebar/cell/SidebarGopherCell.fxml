@@ -1,0 +1,50 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import de.jensd.fx.glyphs.fontawesome.FontAwesomeIconView?>
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.layout.HBox?>
+<?import javafx.scene.layout.Region?>
+<?import javafx.scene.text.Font?>
+
+<HBox fx:id="sidebarGopherCell" alignment="CENTER_LEFT" maxHeight="36.0" minHeight="36.0" prefHeight="36.0" prefWidth="290.0" styleClass="cell-container" stylesheets="@SidebarGopherCell.css" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1">
+    <children>
+
+        <!-- ___________-->
+        <!-- POWER ICON -->
+        <!-- ___________-->
+        <FontAwesomeIconView fill="#eed202" glyphName="EXCLAMATION_TRIANGLE" size="2.0em">
+            <HBox.margin>
+                <Insets left="8.0" right="15.0" top="2.0" />
+            </HBox.margin>
+        </FontAwesomeIconView>
+
+        <Region prefWidth="5.0" />
+
+        <!-- ___________-->
+        <!-- MOWER NAME -->
+        <!-- ___________-->
+        <Label fx:id="gopherName" styleClass="main-label" text="Gopher 1" textFill="#b1b3b2">
+            <font>
+                <Font name="Roboto Light" size="18.0" />
+            </font>
+            <HBox.margin>
+                <Insets right="15.0" />
+            </HBox.margin>
+        </Label>
+
+        <Region HBox.hgrow="ALWAYS" />
+      <HBox alignment="CENTER" maxHeight="-Infinity" minHeight="-Infinity" prefHeight="25.0" styleClass="coordinate-container">
+         <children>
+            <Label fx:id="gopherPositionLabel" styleClass="main-label" text="(2, 3)">
+               <padding>
+                  <Insets left="5.0" right="5.0" />
+               </padding>
+            </Label>
+         </children>
+         <HBox.margin>
+            <Insets right="8.0" />
+         </HBox.margin>
+      </HBox>
+    </children>
+</HBox>

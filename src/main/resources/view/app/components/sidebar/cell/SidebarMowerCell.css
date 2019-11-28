@@ -1,0 +1,11 @@
+.cell-container{
+    -fx-background-color: #1E1E26;
+}
+
+.active{
+    -fx-fill: #00ff00;
+}
+
+.disabled{
+    -fx-fill: #d80f0f
+}

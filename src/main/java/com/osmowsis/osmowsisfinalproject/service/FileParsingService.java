@@ -1,7 +1,7 @@
 package com.osmowsis.osmowsisfinalproject.service;
 
 import com.osmowsis.osmowsisfinalproject.constant.Direction;
-import com.osmowsis.osmowsisfinalproject.gopher.Gopher;
+import com.osmowsis.osmowsisfinalproject.pojo.Gopher;
 import com.osmowsis.osmowsisfinalproject.model.SimulationDataModel;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;

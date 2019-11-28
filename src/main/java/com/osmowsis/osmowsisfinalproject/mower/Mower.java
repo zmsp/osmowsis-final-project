@@ -2,8 +2,7 @@ package com.osmowsis.osmowsisfinalproject.mower;
 
 import com.osmowsis.osmowsisfinalproject.constant.Direction;
 import com.osmowsis.osmowsisfinalproject.constant.LawnSquareContent;
-import com.osmowsis.osmowsisfinalproject.constant.MowerMovementType;
-import com.osmowsis.osmowsisfinalproject.constant.SimulationRiskProfile;
+import com.osmowsis.osmowsisfinalproject.pojo.MowerMove;
 
 import java.util.ArrayList;
 import java.util.Collections;

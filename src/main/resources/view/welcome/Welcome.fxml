@@ -13,7 +13,7 @@
 <?import javafx.scene.layout.VBox?>
 <?import javafx.scene.text.Font?>
 
-<AnchorPane prefHeight="500.0" prefWidth="500.0" styleClass="welcome-container" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.osmowsis.osmowsisfinalproject.view.welcome.WelcomeController">
+<AnchorPane prefHeight="500.0" prefWidth="500.0" styleClass="welcome-container" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.osmowsis.osmowsisfinalproject.view.controller.WelcomeController">
 
     <children>
         <VBox layoutY="-6.0" prefHeight="500.0" prefWidth="500.0" styleClass="welcome-container" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
@@ -88,7 +88,7 @@
                 </HBox>
                 <HBox alignment="BOTTOM_CENTER">
                    <children>
-                      <JFXButton alignment="CENTER_LEFT" focusTraversable="false" graphicTextGap="50.0" prefHeight="70.0" prefWidth="300.0" styleClass="main-btn" text="Input Data" wrapText="true" onMouseClicked="#handleInputDataButtonClick">
+                      <JFXButton disable="true" alignment="CENTER_LEFT" focusTraversable="false" graphicTextGap="50.0" prefHeight="70.0" prefWidth="300.0" styleClass="main-btn" text="Input Data" wrapText="true" onMouseClicked="#handleInputDataButtonClick">
                          <cursor>
                             <Cursor fx:constant="HAND" />
                          </cursor>
@@ -109,7 +109,7 @@
                 </HBox>
                 <HBox alignment="BOTTOM_CENTER">
                    <children>
-                      <JFXButton alignment="CENTER_LEFT" focusTraversable="false" graphicTextGap="40.0" prefHeight="70.0" prefWidth="300.0" styleClass="main-btn" text="Generate Data" wrapText="true" onMouseClicked="#handleGenerateDataButtonClick">
+                      <JFXButton disable="true" alignment="CENTER_LEFT" focusTraversable="false" graphicTextGap="40.0" prefHeight="70.0" prefWidth="300.0" styleClass="main-btn" text="Generate Data" wrapText="true" onMouseClicked="#handleGenerateDataButtonClick">
                          <cursor>
                             <Cursor fx:constant="HAND" />
                          </cursor>
