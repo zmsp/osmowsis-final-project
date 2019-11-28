@@ -1,6 +1,9 @@
 package com.osmowsis.osmowsisfinalproject.view.welcome;
 
 import com.osmowsis.osmowsisfinalproject.config.StageManager;
+import com.osmowsis.osmowsisfinalproject.model.SimulationDataModel;
+import com.osmowsis.osmowsisfinalproject.service.FileParsingService;
+import com.osmowsis.osmowsisfinalproject.service.SimulationRiskProfileService;
 import com.osmowsis.osmowsisfinalproject.view.FXMLView;
 import javafx.stage.FileChooser;
 import lombok.extern.slf4j.Slf4j;
@@ -9,6 +12,7 @@ import org.springframework.context.annotation.Lazy;
 import org.springframework.stereotype.Controller;
 
 import java.io.File;
+import java.io.IOException;
 
 /**
  * The controller that controls the welcome.fxml view
@@ -23,13 +27,22 @@ public class WelcomeController
     // FIELDS
     ///////////////////////////////////////////////////////////////////////////////////////////////////////////////////
     private final StageManager stageManager;
+    private final FileParsingService fileParsingService;
+    private final SimulationDataModel simulationDataModel;
+    private final SimulationRiskProfileService simulationRiskProfileService;
 
     // CONSTRUCTORS
     ///////////////////////////////////////////////////////////////////////////////////////////////////////////////////
     @Autowired
-    public WelcomeController(@Lazy final StageManager stageManager)
+    public WelcomeController(@Lazy final StageManager stageManager,
+                             final FileParsingService fileParsingService,
+                             final SimulationDataModel simulationDataModel,
+                             final SimulationRiskProfileService simulationRiskProfileService)
     {
         this.stageManager = stageManager;
+        this.fileParsingService = fileParsingService;
+        this.simulationDataModel = simulationDataModel;
+        this.simulationRiskProfileService = simulationRiskProfileService;
     }
 
     // PUBLIC METHODS
@@ -40,15 +53,29 @@ public class WelcomeController
     public void handleImportFileBtnClick()
     {
         FileChooser fileChooser = new FileChooser();
-        fileChooser.getExtensionFilters().add(new FileChooser.ExtensionFilter("Text Files", "*.txt", "*.dat", "*.csv"));
+        fileChooser.getExtensionFilters().add(new FileChooser.ExtensionFilter("Text Files", "*.txt"));
 
         File selectedFile = fileChooser.showOpenDialog(stageManager.getPrimaryStage());
 
-        // TODO: PASS THE FILE TO THE PARSING UTILITY AND USE THAT TO IMPORT THE DATA
+        if(selectedFile != null)
+        {
+            try {
+                fileParsingService.parseFile(selectedFile);
 
-        // TODO: SHOW THE VIEW FOR THE MAIN SIMULATION VIEW
+                simulationRiskProfileService.determineAndSetSimulationRiskProfile();
 
-        log.info("The import file button was clicked");
+                // TODO: SHOW THE VIEW FOR THE MAIN SIMULATION VIEW
+            }
+            catch (IOException e)
+            {
+                log.error("[PARSING ERROR] :: handleImportFileBtnClick - An unknown error occurred", e);
+
+                // CLEAR OUT THE DATA MODEL IN CASE SOMETHING WAS SAVED
+                simulationDataModel.resetDataModel();
+
+                // TODO: DISPLAY THE ERROR MESSAGE ON THE UI
+            }
+        }
     }
 
     /**

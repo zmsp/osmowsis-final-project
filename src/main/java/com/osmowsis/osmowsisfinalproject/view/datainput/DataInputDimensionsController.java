@@ -122,7 +122,7 @@ public class DataInputDimensionsController implements Initializable
         if(errors.isEmpty())
         {
             // INTEGER PARSING CANNOT THROW NFE BECAUSE THE VALIDATION SERVICE ALREADY CHECKED FOR IT
-            simulationDataModel.updateLawnDimensions(Integer.parseInt(xDimensionStr), Integer.parseInt(yDimensionStr));
+            simulationDataModel.setInitialLawnDimensions(Integer.parseInt(xDimensionStr), Integer.parseInt(yDimensionStr));
 
             // TODO: REMOVE THIS AFTER, JUST TESTING THAT THIS WORKS PRIOR TO ADDING MODAL
             simulationDataModel.addNewMowerToModel(2, 3, Direction.SOUTH, false);
