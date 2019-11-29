@@ -66,7 +66,7 @@ public class WelcomeController
 
                 stageManager.switchScene(FXMLView.MAIN_APP_CONTAINER);
             }
-            catch (IOException e)
+            catch (Exception e)
             {
                 log.error("[PARSING ERROR] :: handleImportFileBtnClick - An unknown error occurred", e);
 

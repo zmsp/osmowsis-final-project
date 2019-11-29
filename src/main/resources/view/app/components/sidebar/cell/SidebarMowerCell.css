@@ -7,5 +7,24 @@
 }
 
 .disabled{
-    -fx-fill: #d80f0f
+    -fx-fill: #d80f0f;
+}
+
+.smart-active{
+    -fx-fill: #fefdaf;
+}
+
+.smart-disabled{
+    -fx-fill: #272731;
+}
+
+.main-label{
+    -fx-text-fill: #b1b3b2;
+}
+
+.coordinate-container{
+    -fx-background-color: transparent;
+    -fx-border-radius: 7px;
+    -fx-border-width: 1px;
+    -fx-border-color: #FEFDAF;
 }

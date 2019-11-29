@@ -3,6 +3,7 @@ package com.osmowsis.osmowsisfinalproject.view.controller;
 import com.osmowsis.osmowsisfinalproject.constant.DataInputMowerCellCssConstant;
 import com.osmowsis.osmowsisfinalproject.constant.FXMLView;
 import com.osmowsis.osmowsisfinalproject.constant.MowerUIConstant;
+import com.osmowsis.osmowsisfinalproject.constant.SidebarCssConstant;
 import com.osmowsis.osmowsisfinalproject.model.SimulationDataModel;
 import com.osmowsis.osmowsisfinalproject.pojo.Mower2;
 import de.jensd.fx.glyphs.fontawesome.FontAwesomeIconView;
@@ -54,6 +55,9 @@ public class SidebarMowerCellController
     private Label mowerName;
 
     @FXML
+    private FontAwesomeIconView smartIcon;
+
+    @FXML
     private FontAwesomeIconView batteryIcon;
 
     @FXML
@@ -64,6 +68,9 @@ public class SidebarMowerCellController
 
     @FXML
     private FontAwesomeIconView directionIcon;
+
+    @FXML
+    private Label mowerPositionLabel;
 
     @Getter
     private Mower2 mower;
@@ -102,9 +109,11 @@ public class SidebarMowerCellController
         this.mower = mower;
         updatePowerIcon(mower);
         updateMowerName(mower);
+        updateSmartIcon(mower);
         updateBatteryIcon(mower);
         updateBatteryEnergyLabel(mower);
         updateDirectionInfo(mower);
+        updatePositionInfo(mower);
     }
 
     // PRIVATE METHODS
@@ -138,6 +147,22 @@ public class SidebarMowerCellController
     private void updateMowerName(final Mower2 mower)
     {
         mowerName.setText(MowerUIConstant.MOWER_NAME_PREFIX + " " + (mower.getMowerNumber() + 1));
+    }
+
+    /**
+     * Updates the smart icon
+     */
+    private void updateSmartIcon(final Mower2 mower)
+    {
+        if(mower.isStrategic() && !smartIcon.getStyleClass().contains(SidebarCssConstant.SMART_ICON_ACTIVE))
+        {
+            smartIcon.getStyleClass().remove(SidebarCssConstant.SMART_ICON_DISABLED);
+            smartIcon.getStyleClass().add(SidebarCssConstant.SMART_ICON_ACTIVE);
+        }
+        else{
+            smartIcon.getStyleClass().remove(SidebarCssConstant.SMART_ICON_ACTIVE);
+            smartIcon.getStyleClass().add(SidebarCssConstant.SMART_ICON_DISABLED);
+        }
     }
 
     /**
@@ -201,5 +226,15 @@ public class SidebarMowerCellController
     {
         directionAbbreviation.setText(mower.getCurrentDirection().getAbbreviation());
         directionIcon.setRotate(mower.getCurrentDirection().getIconAngle());
+    }
+
+    /**
+     * Updates the mowers position info
+     *
+     * @param mower - The mower to update
+     */
+    private void updatePositionInfo(final Mower2 mower)
+    {
+        mowerPositionLabel.setText(mower.getCurrentXCoordinate() + ", " + mower.getCurrentYCoordinate());
     }
 }

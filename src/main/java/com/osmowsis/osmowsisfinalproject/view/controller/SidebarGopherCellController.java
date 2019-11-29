@@ -19,8 +19,6 @@ public class SidebarGopherCellController
     // FIELDS
     ///////////////////////////////////////////////////////////////////////////////////////////////////////////////////
     private static final String GOPHER_NAME_PREFIX = "Gopher";
-    private static final String GOPHER_POSITION_PREFIX = "(";
-    private static final String GOPHER_POSITION_SUFFIX = ")";
     private static final String GOPHER_POSITION_DELIMITER = ", ";
 
     @FXML
@@ -84,11 +82,6 @@ public class SidebarGopherCellController
      */
     private void updateGopherPositionLabel()
     {
-        StringBuilder sb = new StringBuilder();
-        sb.append(gopher.getXCoordinate());
-        sb.append(GOPHER_POSITION_DELIMITER);
-        sb.append(gopher.getYCoordinate());
-
-        gopherPositionLabel.setText(sb.toString());
+        gopherPositionLabel.setText(gopher.getXCoordinate() + GOPHER_POSITION_DELIMITER + gopher.getYCoordinate());
     }
 }

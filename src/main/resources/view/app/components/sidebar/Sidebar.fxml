@@ -50,7 +50,7 @@
         </Separator>
         <VBox prefHeight="663.0" prefWidth="300.0">
             <children>
-                <HBox alignment="CENTER_LEFT" layoutX="15.0" layoutY="25.0" styleClass="account-header-container" onMouseClicked="#handleSimulationDetailsBtnClick">
+                <HBox onMouseClicked="#handleSimulationDetailsBtnClick" alignment="CENTER_LEFT" layoutX="15.0" layoutY="25.0" styleClass="account-header-container">
                     <children>
                         <FontAwesomeIconView glyphName="LIST" size="1.9em" styleClass="main-icon">
                             <HBox.margin>
@@ -88,27 +88,139 @@
                   <Cursor fx:constant="HAND" />
                </cursor>
                 </HBox>
-                <VBox fx:id="simulationDetailsArea" maxHeight="100.0" minHeight="100.0" prefHeight="100.0" prefWidth="290.0" styleClass="details-area">
+                <VBox fx:id="simulationDetailsArea" maxHeight="75.0" minHeight="75.0" prefHeight="75.0" prefWidth="290.0" styleClass="details-area">
                     <VBox.margin>
                         <Insets left="5.0" right="5.0" />
                     </VBox.margin>
                     <children>
-                        <Label text="Starting Grass:">
-                            <VBox.margin>
-                                <Insets bottom="3.0" />
-                            </VBox.margin>
-                        </Label>
-                        <Label layoutX="15.0" layoutY="14.0" text="Remaining Grass:">
-                            <padding>
-                                <Insets bottom="3.0" />
-                            </padding>
-                        </Label>
-                        <Label layoutX="15.0" layoutY="34.0" text="Total Grass Cut:">
-                            <VBox.margin>
-                                <Insets bottom="3.0" />
-                            </VBox.margin>
-                        </Label>
-                        <Label layoutX="15.0" layoutY="54.0" text="Active Mowers: " />
+                  <HBox layoutX="15.0" layoutY="65.0">
+                     <children>
+                        <HBox prefWidth="180.0">
+                           <children>
+                              <Label styleClass="main-text" text="Current Mower:">
+                                 <HBox.margin>
+                                    <Insets right="3.0" />
+                                 </HBox.margin>
+                              </Label>
+                              <Label styleClass="main-text" text="M1">
+                                 <font>
+                                    <Font name="System Bold" size="12.0" />
+                                 </font>
+                              </Label>
+                           </children>
+                        </HBox>
+                        <HBox layoutX="10.0" layoutY="10.0">
+                           <children>
+                              <Label styleClass="main-text" text="Active Mowers:">
+                                 <HBox.margin>
+                                    <Insets right="3.0" />
+                                 </HBox.margin>
+                              </Label>
+                              <Label styleClass="main-text" text="4">
+                                 <font>
+                                    <Font name="System Bold" size="12.0" />
+                                 </font>
+                              </Label>
+                           </children>
+                        </HBox>
+                     </children>
+                  </HBox>
+                  <HBox layoutX="15.0" layoutY="48.0">
+                     <children>
+                        <HBox prefWidth="180.0">
+                           <children>
+                              <Label styleClass="main-text" text="Current Turn:">
+                                 <HBox.margin>
+                                    <Insets right="3.0" />
+                                 </HBox.margin>
+                              </Label>
+                              <Label styleClass="main-text" text="1">
+                                 <font>
+                                    <Font name="System Bold" size="12.0" />
+                                 </font>
+                              </Label>
+                           </children>
+                        </HBox>
+                        <HBox layoutX="10.0" layoutY="10.0">
+                           <children>
+                              <Label styleClass="main-text" text="Max Turns:">
+                                 <HBox.margin>
+                                    <Insets right="3.0" />
+                                 </HBox.margin>
+                              </Label>
+                              <Label styleClass="main-text" text="150">
+                                 <font>
+                                    <Font name="System Bold" size="12.0" />
+                                 </font>
+                              </Label>
+                           </children>
+                        </HBox>
+                     </children>
+                  </HBox>
+                  <HBox layoutX="15.0" layoutY="31.0">
+                     <children>
+                        <HBox prefWidth="180.0">
+                           <children>
+                              <Label styleClass="main-text" text="Total Grass Cut:">
+                                 <HBox.margin>
+                                    <Insets right="3.0" />
+                                 </HBox.margin>
+                              </Label>
+                              <Label styleClass="main-text" text="4">
+                                 <font>
+                                    <Font name="System Bold" size="12.0" />
+                                 </font>
+                              </Label>
+                           </children>
+                        </HBox>
+                        <HBox layoutX="10.0" layoutY="10.0">
+                           <children>
+                              <Label styleClass="main-text" text="Starting Grass:">
+                                 <HBox.margin>
+                                    <Insets right="3.0" />
+                                 </HBox.margin>
+                              </Label>
+                              <Label styleClass="main-text" text="200">
+                                 <font>
+                                    <Font name="System Bold" size="12.0" />
+                                 </font>
+                              </Label>
+                           </children>
+                        </HBox>
+                     </children>
+                  </HBox>
+                  <HBox layoutX="15.0" layoutY="48.0">
+                     <children>
+                        <HBox prefWidth="180.0">
+                           <children>
+                              <Label styleClass="main-text" text="Turns Left in Period:">
+                                 <HBox.margin>
+                                    <Insets right="3.0" />
+                                 </HBox.margin>
+                              </Label>
+                              <Label styleClass="main-text" text="4">
+                                 <font>
+                                    <Font name="System Bold" size="12.0" />
+                                 </font>
+                              </Label>
+                           </children>
+                        </HBox>
+                        <HBox layoutX="10.0" layoutY="10.0">
+                           <children>
+                              <Label styleClass="main-text" text="Gopher Period">
+                                 <HBox.margin>
+                                    <Insets right="3.0" />
+                                 </HBox.margin>
+                              </Label>
+                              <Label styleClass="main-text" text="4">
+                                 <font>
+                                    <Font name="System Bold" size="12.0" />
+                                 </font>
+                              </Label>
+                           </children>
+                        </HBox>
+                     </children>
+                  </HBox>
                     </children>
                     <padding>
                         <Insets left="5.0" top="4.0" />
@@ -153,7 +265,7 @@
                </cursor>
                 </HBox>
                 <JFXListView fx:id="mowerListView" focusTraversable="false" prefHeight="500.0" />
-                <HBox alignment="CENTER_LEFT" styleClass="account-header-container" onMouseClicked="#handleGopherDetailsBtnClick">
+                <HBox alignment="CENTER_LEFT" onMouseClicked="#handleGopherDetailsBtnClick" styleClass="account-header-container">
                     <children>
                         <FontAwesomeIconView glyphName="LIST" size="1.9em" styleClass="main-icon">
                             <HBox.margin>
