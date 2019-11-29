@@ -32,68 +32,38 @@
     -jfx-rippler-fill: #00acac;
 }
 
-/* COMMON SEPARATORS */
+/*-------------------------------------------------------------------------------------------------------------------*/
+/* HEADER AREA */
 .main-separator .line{
     -fx-border-color: #FEFDAF;
     -fx-border-width: 1px;
 }
 
 /*-------------------------------------------------------------------------------------------------------------------*/
-/* ACCOUNTS AREA */
-.account-header-container{
+/* DETAILS AREA */
+.details-btn-container{
     -fx-border-color: #1E1E26;
     -fx-border-width: 0px 0px 1px 0px;
 }
 
-.account-btn{
-    -fx-background-color: transparent;
-    -fx-background-radius: 10px;
-    -fx-border-width: 1px;
-    -fx-border-color: #FEFDAF;
-    -fx-border-radius: 10px;
-    -fx-text-fill: #b1b3b2;
+.details-btn-label{
+    -fx-text-fill: #b8bbbf;
 }
 
-.account-btn:hover{
-    -fx-background-color: #005656;
+/* USED FOR THE SIM DETAILS VBOX */
+.details-area{
+    -fx-background-color: #1E1E26;
 }
 
-.account-btn .jfx-rippler{
-    -jfx-rippler-fill: #00acac;
-}
-
-.account-icon{
-    -fx-fill: #FEFDAF;
-}
-
-.account-btn-selected{
-    -fx-background-color: transparent;
-    -fx-background-radius: 10px;
-    -fx-border-width: 1px;
-    -fx-border-color: #00acac;
-    -fx-border-radius: 10px;
-    -fx-text-fill: #b1b3b2;
-}
-
-/* LIST VIEW AREA */
+/* USED FOR THE MOWER AND GOPHER LIST VIEWS */
 .jfx-list-view, .list-cell{
     -fx-background-color: #2C2C37;
     -fx-padding: 0px 2px;
 }
 
 /*-------------------------------------------------------------------------------------------------------------------*/
-/* SIDEBAR USER AREA */
-.sidebar-user-container{
+/* SIDEBAR FOOTER AREA */
+.sidebar-footer-btn-container{
     -fx-border-color: #1E1E26;
     -fx-border-width: 1px 0px 0px 0px;
-}
-
-.user-icon{
-    -fx-fill: #FEFDAF;
-}
-
-
-
-.details-area{
-    -fx-background-color: #1E1E26;
 }

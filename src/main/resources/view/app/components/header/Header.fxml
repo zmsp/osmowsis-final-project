@@ -18,7 +18,7 @@
                     <children>
                         <HBox alignment="CENTER_LEFT" prefHeight="60.0">
                             <children>
-                                <Label fx:id="headerLabel" text="External Account Settings" textFill="#242a31">
+                                <Label fx:id="headerLabel" text="Lawn Model" textFill="#242a31">
                                     <font>
                                         <Font name="Roboto Light" size="20.0" />
                                     </font>

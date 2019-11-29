@@ -18,6 +18,7 @@ public enum FXMLView
     DATA_INPUT_MOWER_CELL("/view/datainput/cell/DataInputMowerCell.fxml"),
     SIDEBAR_MOWER_CELL("/view/app/components/sidebar/cell/SidebarMowerCell.fxml"),
     SIDEBAR_GOPHER_CELL("/view/app/components/sidebar/cell/SidebarGopherCell.fxml"),
+    LAWN_GRID_CELL("/view/app/components/contentarea/LawnGridCell.fxml"),
     MAIN_APP_CONTAINER("/view/app/AppContainer.fxml");
 
     // FIELDS

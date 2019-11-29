@@ -1,0 +1,22 @@
+.borders{
+    -fx-border-width: 1px;
+}
+.grass{
+    -fx-background-color: #2F5F00;
+    -fx-border-color: #2C2C37;
+}
+
+.grass-gopher{
+    -fx-background-color: #2F5F00;
+    -fx-border-color: #eed202;
+}
+
+.empty{
+    -fx-background-color: transparent;
+    -fx-border-color: #2C2C37;
+}
+
+.empty-gopher{
+    -fx-background-color: transparent;
+    -fx-border-color: #eed202;
+}
