@@ -3,6 +3,7 @@ package com.osmowsis.osmowsisfinalproject.model;
 import com.osmowsis.osmowsisfinalproject.constant.Direction;
 import com.osmowsis.osmowsisfinalproject.constant.LawnSquareContent;
 import com.osmowsis.osmowsisfinalproject.constant.SimulationRiskProfile;
+import com.osmowsis.osmowsisfinalproject.mower.Mower;
 import com.osmowsis.osmowsisfinalproject.pojo.Gopher;
 import com.osmowsis.osmowsisfinalproject.pojo.LawnSquare;
 import com.osmowsis.osmowsisfinalproject.pojo.Mower2;
@@ -12,6 +13,9 @@ import javafx.collections.ObservableList;
 import lombok.Getter;
 import lombok.Setter;
 import org.springframework.stereotype.Repository;
+
+import java.util.ArrayDeque;
+import java.util.Deque;
 
 /**
  * Central data model for the simulation
@@ -27,16 +31,31 @@ public class SimulationDataModel implements BaseDataModel
     private SimpleIntegerProperty lawnXDimension;
     private SimpleIntegerProperty lawnYDimension;
     private SimpleIntegerProperty lawnArea;
+
+    @Getter
     private SimpleIntegerProperty startingGrassToCut;
+
     private SimpleIntegerProperty remainingGrassToCut;
+
+    @Getter
     private SimpleIntegerProperty totalGrassCut;
 
+    @Getter
     private SimpleIntegerProperty activeMowerCount;
     private SimpleIntegerProperty startingMowerEnergy;
 
     private SimpleIntegerProperty gopherCount;
+
+    @Getter
     private SimpleIntegerProperty gopherPeriod;
 
+    @Getter
+    private SimpleIntegerProperty turnsRemainingInPeriod;
+
+    @Getter
+    private SimpleIntegerProperty currentTurn;
+
+    @Getter
     private SimpleIntegerProperty maxTurns;
 
     @Getter
@@ -45,7 +64,10 @@ public class SimulationDataModel implements BaseDataModel
 
     @Getter
     private ObservableList<Mower2> mowers;
+    private Deque<Mower2> mowerQueue;
+    private Mower2 currentMower;
 
+    @Getter
     private ObservableList<LawnSquare> lawnSquares;
 
     @Getter
@@ -71,6 +93,8 @@ public class SimulationDataModel implements BaseDataModel
         lawnSquares = FXCollections.observableArrayList();
         gophers = FXCollections.observableArrayList();
 
+        mowerQueue = new ArrayDeque<>();
+
         lawnXDimension = new SimpleIntegerProperty();
         lawnYDimension = new SimpleIntegerProperty();
         lawnArea = new SimpleIntegerProperty();
@@ -83,7 +107,9 @@ public class SimulationDataModel implements BaseDataModel
 
         gopherCount = new SimpleIntegerProperty();
         gopherPeriod = new SimpleIntegerProperty();
+        turnsRemainingInPeriod = new SimpleIntegerProperty();
 
+        currentTurn = new SimpleIntegerProperty();
         maxTurns = new SimpleIntegerProperty();
 
         simulationRiskProfile = SimulationRiskProfile.LOW;
@@ -110,6 +136,32 @@ public class SimulationDataModel implements BaseDataModel
         }
 
         return result;
+    }
+
+    /**
+     * Gets the next mower from the queue and then adds it to the back of the queue
+     *
+     * Removes disabled mowers from the queue
+     *
+     * @return - The next mower
+     */
+    public Mower2 getNextMower()
+    {
+        while(mowerQueue.size() > 0)
+        {
+            Mower2 nextMower = mowerQueue.removeFirst();
+
+            if(!nextMower.isDisabled())
+            {
+                mowerQueue.addLast(nextMower);
+
+                currentMower = nextMower;
+
+                return nextMower;
+            }
+        }
+
+        throw new RuntimeException("[MOWER QUEUE] :: getNextMower - Mower queue is empty");
     }
 
 
@@ -166,6 +218,7 @@ public class SimulationDataModel implements BaseDataModel
         mower.setCurrentYCoordinate(yCoordinate);
 
         mowers.add(mower);
+        mowerQueue.addLast(mower);
 
         LawnSquare lawnSquare = getLawnSquareByCoordinates(xCoordinate, yCoordinate);
 
@@ -237,6 +290,10 @@ public class SimulationDataModel implements BaseDataModel
     {
         return startingMowerEnergy.get();
     }
+
+    public int getLawnXDimension(){ return lawnXDimension.get(); }
+
+    public int getLawnYDimension(){ return lawnYDimension.get(); }
 
 
     // PRIVATE METHODS

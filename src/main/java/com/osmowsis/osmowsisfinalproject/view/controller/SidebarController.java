@@ -11,6 +11,7 @@ import de.jensd.fx.glyphs.fontawesome.FontAwesomeIconView;
 import javafx.beans.binding.Bindings;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
+import javafx.scene.control.Label;
 import javafx.scene.layout.Region;
 import javafx.scene.layout.VBox;
 import lombok.extern.slf4j.Slf4j;
@@ -48,6 +49,30 @@ public class SidebarController implements Initializable
     private VBox simulationDetailsArea;
 
     @FXML
+    private Label simDetailsCurrentMowerLabel;
+
+    @FXML
+    private Label simDetailsActiveMowerCountLabel;
+
+    @FXML
+    private Label simDetailsCurrentTurnLabel;
+
+    @FXML
+    private Label simDetailsMaxTurnsLabel;
+
+    @FXML
+    private Label simDetailsTotalGrassCutLabel;
+
+    @FXML
+    private Label simDetailsStaringGrassLabel;
+
+    @FXML
+    private Label simDetailsRemainingPeriodTurnsLabel;
+
+    @FXML
+    private Label simDetailsGopherPeriodLabel;
+
+    @FXML
     private JFXListView<Mower2> mowerListView;
 
     @FXML
@@ -66,6 +91,15 @@ public class SidebarController implements Initializable
     @Override
     public void initialize(URL location, ResourceBundle resources)
     {
+        // BINDS THE SIM DETAILS WITH THE MODEL
+        simDetailsActiveMowerCountLabel.textProperty().bind(simulationDataModel.getActiveMowerCount().asString());
+        simDetailsCurrentTurnLabel.textProperty().bind(simulationDataModel.getCurrentTurn().asString());
+        simDetailsMaxTurnsLabel.textProperty().bind(simulationDataModel.getMaxTurns().asString());
+        simDetailsTotalGrassCutLabel.textProperty().bind(simulationDataModel.getTotalGrassCut().asString());
+        simDetailsStaringGrassLabel.textProperty().bind(simulationDataModel.getStartingGrassToCut().asString());
+        simDetailsRemainingPeriodTurnsLabel.textProperty().bind(simulationDataModel.getTurnsRemainingInPeriod().asString());
+        simDetailsGopherPeriodLabel.textProperty().bind(simulationDataModel.getGopherPeriod().asString());
+
         // BINDS THE MOWER LIST VIEW TO THE ITEMS IN THE MODEL
         mowerListView.setItems(simulationDataModel.getMowers());
         mowerListView.setCellFactory(column -> getSidebarMowerCell());

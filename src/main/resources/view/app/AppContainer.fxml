@@ -28,7 +28,7 @@
             <!-- _____________-->
             <!-- CONTENT AREA -->
             <!-- _____________-->
-            <fx:include fx:id="contentArea" source="components/contentarea/ContentArea.fxml" AnchorPane.bottomAnchor="0.0" AnchorPane.topAnchor="62.0" AnchorPane.leftAnchor="300.0" AnchorPane.rightAnchor="0.0"/>
+            <fx:include fx:id="contentArea" source="components/contentarea/LawnGrid.fxml" AnchorPane.bottomAnchor="0.0" AnchorPane.topAnchor="62.0" AnchorPane.leftAnchor="300.0" AnchorPane.rightAnchor="0.0"/>
         </children>
     </AnchorPane>
 </StackPane>

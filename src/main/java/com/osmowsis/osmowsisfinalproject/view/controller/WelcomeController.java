@@ -12,7 +12,6 @@ import org.springframework.context.annotation.Lazy;
 import org.springframework.stereotype.Controller;
 
 import java.io.File;
-import java.io.IOException;
 
 /**
  * The controller that controls the welcome.fxml view
