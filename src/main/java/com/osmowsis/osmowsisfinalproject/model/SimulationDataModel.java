@@ -3,7 +3,6 @@ package com.osmowsis.osmowsisfinalproject.model;
 import com.osmowsis.osmowsisfinalproject.constant.Direction;
 import com.osmowsis.osmowsisfinalproject.constant.LawnSquareContent;
 import com.osmowsis.osmowsisfinalproject.constant.SimulationRiskProfile;
-import com.osmowsis.osmowsisfinalproject.mower.Mower;
 import com.osmowsis.osmowsisfinalproject.pojo.Gopher;
 import com.osmowsis.osmowsisfinalproject.pojo.LawnSquare;
 import com.osmowsis.osmowsisfinalproject.pojo.Mower2;
@@ -139,6 +138,48 @@ public class SimulationDataModel implements BaseDataModel
     }
 
     /**
+     * Gets a mower by the coordinates, throws exception if mower does not exist for those coordinates
+     *
+     * @param x - The x coordinate
+     * @param y - The y coordinate
+     *
+     * @return - The mower that is located at the coordinates
+     */
+    public Mower2 getMowerByCoordinates(final int x, final int y)
+    {
+        for(Mower2 mower : mowers)
+        {
+            if(mower.getCurrentXCoordinate() == x && mower.getCurrentYCoordinate() == y)
+            {
+                return mower;
+            }
+        }
+
+        throw new RuntimeException("[MOWER NOT FOUND] :: getMowerByCoordinates - No mower located at coordinates");
+    }
+
+    /**
+     * Gets a gopher by the coordinates, throws an exception if the gopher does not exist at coordinates
+     *
+     * @param x - The x coordinate
+     * @param y - The y coordinate
+     *
+     * @return - The gopher
+     */
+    public Gopher getGopherByCoordinates(final int x, final int y)
+    {
+        for(Gopher gopher : gophers)
+        {
+            if(gopher.getXCoordinate() == x && gopher.getYCoordinate() == y)
+            {
+                return gopher;
+            }
+        }
+
+        throw new RuntimeException("[GOPHER NOT FOUND] :: getGopherByCoordinates - No gopher located at coordinates");
+    }
+
+    /**
      * Gets the next mower from the queue and then adds it to the back of the queue
      *
      * Removes disabled mowers from the queue
@@ -224,7 +265,7 @@ public class SimulationDataModel implements BaseDataModel
 
         if(lawnSquare != null)
         {
-            lawnSquare.setLawnSquareContent(LawnSquareContent.EMPTY);
+            lawnSquare.setLawnSquareContent(LawnSquareContent.EMPTY_MOWER_CHARGER);
 
             updateRemainingGrassToCut(remainingGrassToCut.get() - 1);
         }
@@ -251,11 +292,11 @@ public class SimulationDataModel implements BaseDataModel
 
         if(lawnSquare != null && lawnSquare.getLawnSquareContent() == LawnSquareContent.GRASS)
         {
-            lawnSquare.setLawnSquareContent(LawnSquareContent.GOPHER_GRASS);
+            lawnSquare.setLawnSquareContent(LawnSquareContent.GRASS_GOPHER);
         }
-        else if(lawnSquare != null && lawnSquare.getLawnSquareContent() == LawnSquareContent.EMPTY)
+        else if(lawnSquare != null && lawnSquare.getLawnSquareContent() == LawnSquareContent.EMPTY_MOWER_CHARGER)
         {
-            lawnSquare.setLawnSquareContent(LawnSquareContent.GOPHER_EMPTY);
+            lawnSquare.setLawnSquareContent(LawnSquareContent.EMPTY_MOWER_GOPHER_CHARGER);
         }
         else{
             throw new RuntimeException("[INVALID GOPHER] :: addNewGopherToModel - Lawn Square does not exist");
@@ -282,6 +323,14 @@ public class SimulationDataModel implements BaseDataModel
         remainingGrassToCut.set(newValue);
 
         totalGrassCut.set(startingGrassToCut.get() - newValue);
+    }
+
+    /**
+     * Increments the current turn by 1
+     */
+    public void incrementCurrentTurn ()
+    {
+        currentTurn.set(currentTurn.get() + 1);
     }
 
     // GETTER ACCESS METHODS FOR SIMPLE PROPERTIES

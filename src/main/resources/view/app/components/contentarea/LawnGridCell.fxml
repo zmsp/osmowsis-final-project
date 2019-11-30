@@ -1,16 +1,120 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
+<?import de.jensd.fx.glyphs.fontawesome.FontAwesomeIconView?>
+<?import javafx.geometry.Insets?>
 <?import javafx.scene.control.Label?>
 <?import javafx.scene.layout.HBox?>
+<?import javafx.scene.layout.Region?>
+<?import javafx.scene.layout.VBox?>
 <?import javafx.scene.text.Font?>
 
-<HBox fx:id="lawnGridCellContainer" alignment="CENTER" styleClass="borders"
-      xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1" stylesheets="@LawnGridCell.css">
+<HBox fx:id="lawnGridCellContainer" alignment="CENTER" prefHeight="80.0" prefWidth="60.0" styleClass="grass"
+      stylesheets="@LawnGridCell.css" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1">
     <children>
-        <Label text="Grass">
-            <font>
-                <Font name="Ebrima Bold" size="12.0"/>
-            </font>
-        </Label>
+        <VBox HBox.hgrow="ALWAYS">
+            <children>
+                <Region prefHeight="200.0" prefWidth="200.0" VBox.vgrow="ALWAYS"/>
+
+                <!-- ___________-->
+                <!-- MOWER INFO -->
+                <!-- ___________-->
+                <VBox fx:id="mowerInfoContainer" fillWidth="false" visible="false">
+                    <children>
+
+                        <!-- __________-->
+                        <!-- DIRECTION -->
+                        <!-- __________-->
+                        <HBox alignment="CENTER">
+                            <children>
+                                <Region prefWidth="200.0" HBox.hgrow="ALWAYS"/>
+
+                                <HBox alignment="CENTER" minWidth="50.0">
+                                    <children>
+                                        <Label fx:id="directionAbbreviation" styleClass="main-text" text="N">
+                                            <font>
+                                                <Font name="Roboto Light" size="8.0"/>
+                                            </font>
+                                        </Label>
+                                        <FontAwesomeIconView fx:id="directionIcon" glyphName="ARROW_UP" size="0.8em"
+                                                             styleClass="main-icon"/>
+                                    </children>
+                                </HBox>
+
+                                <Region layoutX="10.0" layoutY="10.0" prefWidth="200.0" HBox.hgrow="ALWAYS"/>
+                            </children>
+                            <VBox.margin>
+                                <Insets bottom="4.0"/>
+                            </VBox.margin>
+                        </HBox>
+
+                        <!-- _____-->
+                        <!-- NAME -->
+                        <!-- _____-->
+                        <HBox alignment="CENTER">
+                            <children>
+                                <Region prefWidth="200.0" HBox.hgrow="ALWAYS"/>
+
+                                <HBox alignment="CENTER" fillHeight="false" maxHeight="-Infinity" minHeight="-Infinity"
+                                      minWidth="25.0" prefHeight="18.0" styleClass="mower-info-container">
+                                    <children>
+                                        <Label fx:id="mowerAbbreviationLabel" styleClass="main-text" text="M8">
+                                            <padding>
+                                                <Insets left="5.0" right="5.0"/>
+                                            </padding>
+                                            <font>
+                                                <Font size="8.0"/>
+                                            </font>
+                                        </Label>
+                                    </children>
+                                </HBox>
+
+                                <Region prefWidth="200.0" HBox.hgrow="ALWAYS"/>
+                            </children>
+                        </HBox>
+                    </children>
+                </VBox>
+
+                <Region layoutX="10.0" layoutY="59.0" prefHeight="200.0" prefWidth="200.0"/>
+
+                <!-- _______________________-->
+                <!-- GOPHER / CHARGER ICONS -->
+                <!-- _______________________-->
+                <HBox alignment="CENTER">
+                    <children>
+                        <Region HBox.hgrow="ALWAYS"/>
+
+                        <!-- _______-->
+                        <!-- CHARGER -->
+                        <!-- _______-->
+                        <FontAwesomeIconView fx:id="chargerIcon" glyphName="BOLT" layoutX="41.0" layoutY="25.0"
+                                             size="1.2EM" styleClass="charger-icon" visible="false"/>
+
+                        <!-- ____________-->
+                        <!-- GOPHER INFO -->
+                        <!-- ____________-->
+                        <HBox fx:id="gopherInfoContainer" alignment="CENTER" visible="false" HBox.hgrow="ALWAYS">
+                            <children>
+                                <FontAwesomeIconView glyphName="EXCLAMATION_TRIANGLE" size="1.2EM"
+                                                     styleClass="gopher-icon">
+                                    <HBox.margin>
+                                        <Insets right="3.0"/>
+                                    </HBox.margin>
+                                </FontAwesomeIconView>
+
+                                <Label fx:id="gopherAbbreviationLabel" styleClass="main-text" text="G1">
+                                    <font>
+                                        <Font size="10.0"/>
+                                    </font>
+                                </Label>
+                            </children>
+                        </HBox>
+
+                        <Region HBox.hgrow="ALWAYS"/>
+                    </children>
+                </HBox>
+
+                <Region layoutX="10.0" layoutY="10.0" prefHeight="200.0" prefWidth="200.0" VBox.vgrow="ALWAYS"/>
+            </children>
+        </VBox>
     </children>
 </HBox>

@@ -1,0 +1,29 @@
+/* MAIN CONTAINER */
+.header-container{
+    -fx-background-color: #41414b;
+    /*-fx-background-color: #D7D7D3;*/ /* OTHER POSSIBLE COLOR */
+}
+
+/* MAIN TEXT */
+.main-text{
+    -fx-text-fill: #c8c9c9 ;
+}
+
+/* COMMON SEPARATORS */
+.main-separator .line{
+    -fx-border-color: #1E1E26;
+    -fx-border-width: 1px;
+}
+
+/* EXIT AND MINIMIZE BUTTONS */
+.exit-btn:hover, .exit-btn:pressed{
+    -fx-background-color: #E81123;
+}
+
+.exit-btn:hover .exit-icon, .exit-btn:pressed .exit-icon{
+    -fx-fill: #FFFFFF;
+}
+
+.minimize-btn:hover, .minimize-btn:pressed{
+    -fx-background-color: #B3B0A8;
+}

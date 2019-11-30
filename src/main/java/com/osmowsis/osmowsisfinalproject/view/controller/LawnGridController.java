@@ -1,6 +1,7 @@
 package com.osmowsis.osmowsisfinalproject.view.controller;
 
 import com.osmowsis.osmowsisfinalproject.constant.CSS;
+import com.osmowsis.osmowsisfinalproject.constant.LawnSquareContent;
 import com.osmowsis.osmowsisfinalproject.model.SimulationDataModel;
 import com.osmowsis.osmowsisfinalproject.pojo.LawnSquare;
 import javafx.fxml.FXML;
@@ -16,14 +17,13 @@ import java.util.*;
 
 /**
  * Controller for the lawn grid view
- *
+ * <p>
  * Created on 11/28/2019
  */
 
 @Slf4j
 @Controller
-public class LawnGridController implements Initializable
-{
+public class LawnGridController implements Initializable {
     // FIELDS
     ///////////////////////////////////////////////////////////////////////////////////////////////////////////////////
     private final SimulationDataModel simulationDataModel;
@@ -34,33 +34,46 @@ public class LawnGridController implements Initializable
     @FXML
     private GridPane lawnGridPane;
 
-    private Map<LawnSquare, HBox> cellMap;
+    private Map<LawnSquare, LawnGridCellController> cellMap;
 
     // CONSTRUCTOR
     ///////////////////////////////////////////////////////////////////////////////////////////////////////////////////
     @Autowired
-    public LawnGridController(final SimulationDataModel simulationDataModel)
-    {
+    public LawnGridController(final SimulationDataModel simulationDataModel) {
         this.simulationDataModel = simulationDataModel;
     }
 
     // INIT METHOD
     ///////////////////////////////////////////////////////////////////////////////////////////////////////////////////
     @Override
-    public void initialize(URL location, ResourceBundle resources)
-    {
+    public void initialize(URL location, ResourceBundle resources) {
         buildLawnModel();
+    }
+
+    // PUBLIC METHODS
+    ///////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+
+    /**
+     * Updates the UI of the lawn based on the current information in the model
+     */
+    public void updateLawnUI()
+    {
+        for (LawnGridCellController controller : cellMap.values())
+        {
+            controller.updateLawnCellUI();
+        }
     }
 
     // PRIVATE METHODS
     ///////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+
     /**
      * Builds the lawn model based on the lawn squares in the
      */
     private void buildLawnModel()
     {
-        final int prefGridCellWidth = (int) gridPaneContainer.getPrefWidth() / simulationDataModel.getLawnXDimension();
-        final int prefGridCellHeight = (int) gridPaneContainer.getPrefHeight() / simulationDataModel.getLawnYDimension();
+        final int prefGridCellWidth = (int) lawnGridPane.getPrefWidth() / simulationDataModel.getLawnXDimension();
+        final int prefGridCellHeight = (int) lawnGridPane.getPrefHeight() / simulationDataModel.getLawnYDimension();
 
         log.info("[PREF HEIGHT] - {}", prefGridCellHeight);
         log.info("[PREF WIDTH] - {}", prefGridCellWidth);
@@ -68,7 +81,7 @@ public class LawnGridController implements Initializable
         cellMap = new HashMap<>();
 
         // ADD THE COLUMN CONSTRAINTS
-        for(int i = 0; i < simulationDataModel.getLawnXDimension(); i++)
+        for (int i = 0; i < simulationDataModel.getLawnXDimension(); i++)
         {
             ColumnConstraints constraint = new ColumnConstraints();
             constraint.setPrefWidth(prefGridCellWidth);
@@ -78,7 +91,7 @@ public class LawnGridController implements Initializable
         }
 
         // ADD ROW CONSTRAINTS
-        for(int i = 0; i < simulationDataModel.getLawnYDimension(); i++)
+        for (int i = 0; i < simulationDataModel.getLawnYDimension(); i++)
         {
             RowConstraints constraint = new RowConstraints();
             constraint.setPrefHeight(prefGridCellHeight);
@@ -88,7 +101,7 @@ public class LawnGridController implements Initializable
         }
 
         // ADD THE LAWN CONTENT TO THE GRID
-        for(LawnSquare square : simulationDataModel.getLawnSquares())
+        for (LawnSquare square : simulationDataModel.getLawnSquares())
         {
             int x = square.getxCoordinate();
             int y = square.getyCoordinate();
@@ -101,14 +114,14 @@ public class LawnGridController implements Initializable
             gridCell.setPrefHeight(prefGridCellHeight);
             gridCell.setPrefWidth(prefGridCellWidth);
 
-            gridCell.getStyleClass().add(CSS.GRASS_GOPHER_CLASS_NAME);
+            gridCell.getStyleClass().add(LawnSquareContent.GRASS.getCssClass());
 
-            cellMap.put(square, gridCell);
+            // OBJECT REFERENCE MEANS THAT THE SQUARE USED FOR THE KEY IS THE SAME OBJECT THAT IS STORED IN THE MODEL
+            // SO ALTHOUGH THE UPDATE METHOD WILL NEED TO BE MANUALLY CALLED TO UPDATE THE LAWN GRID, WE CAN STILL
+            // COUNT ON IT USING THE UP TO DATE SQUARES THAT ARE STORED IN THE MODEL AS LONG AS WE UPDATE BASED ON MAP
+            cellMap.put(square, controller);
 
             lawnGridPane.add(gridCell, x, getInvertedYAxisValue(y));
-
-            log.info("[ACTUAL HEIGHT] - {}", gridCell.getHeight());
-            log.info("[ACTUAL WIDTH] - {}", gridCell.getWidth());
         }
     }
 
@@ -117,7 +130,6 @@ public class LawnGridController implements Initializable
      * instead of the bottom, we need convert the original value to the inverted value
      *
      * @param originalValue - The original value
-     *
      * @return - The inverted value
      */
     private int getInvertedYAxisValue(final int originalValue)
@@ -127,6 +139,11 @@ public class LawnGridController implements Initializable
         return yMax - originalValue;
     }
 
+    // SPRING LOOKUPS
+    ///////////////////////////////////////////////////////////////////////////////////////////////////////////////////
     @Lookup
-    LawnGridCellController getLawnGridCellController(){ return null; }
+    LawnGridCellController getLawnGridCellController()
+    {
+        return null;
+    }
 }

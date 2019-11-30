@@ -1,6 +1,8 @@
 package com.osmowsis.osmowsisfinalproject.view.controller;
 
 import com.jfoenix.controls.JFXListView;
+import com.osmowsis.osmowsisfinalproject.config.StageManager;
+import com.osmowsis.osmowsisfinalproject.constant.FXMLView;
 import com.osmowsis.osmowsisfinalproject.constant.SidebarCssConstant;
 import com.osmowsis.osmowsisfinalproject.model.SimulationDataModel;
 import com.osmowsis.osmowsisfinalproject.pojo.Gopher;
@@ -12,11 +14,13 @@ import javafx.beans.binding.Bindings;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 import javafx.scene.control.Label;
+import javafx.scene.layout.HBox;
 import javafx.scene.layout.Region;
 import javafx.scene.layout.VBox;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Lookup;
+import org.springframework.context.annotation.Lazy;
 import org.springframework.stereotype.Controller;
 
 import java.net.URL;
@@ -35,6 +39,8 @@ public class SidebarController implements Initializable
     // FIELDS
     ///////////////////////////////////////////////////////////////////////////////////////////////////////////////////
     private final SimulationDataModel simulationDataModel;
+    private final LawnGridController lawnGridController;
+    private final StageManager stageManager;
 
     @FXML
     private FontAwesomeIconView simulationDetailsCollapsibleIcon;
@@ -73,6 +79,15 @@ public class SidebarController implements Initializable
     private Label simDetailsGopherPeriodLabel;
 
     @FXML
+    private HBox btnGroup1;
+
+    @FXML
+    private HBox btnGroup2;
+
+    @FXML
+    private HBox btnGroup3;
+
+    @FXML
     private JFXListView<Mower2> mowerListView;
 
     @FXML
@@ -81,9 +96,13 @@ public class SidebarController implements Initializable
     // CONSTRUCTORS
     ///////////////////////////////////////////////////////////////////////////////////////////////////////////////////
     @Autowired
-    public SidebarController(final SimulationDataModel simulationDataModel)
+    public SidebarController(final SimulationDataModel simulationDataModel,
+                             final LawnGridController lawnGridController,
+                             @Lazy final StageManager stageManager)
     {
         this.simulationDataModel = simulationDataModel;
+        this.lawnGridController = lawnGridController;
+        this.stageManager = stageManager;
     }
 
     // INIT METHODS
@@ -91,11 +110,10 @@ public class SidebarController implements Initializable
     @Override
     public void initialize(URL location, ResourceBundle resources)
     {
-        // BINDS THE SIM DETAILS WITH THE MODEL
-        simDetailsActiveMowerCountLabel.textProperty().bind(simulationDataModel.getActiveMowerCount().asString());
+        // BINDS THE SIM DETAILS WITH THE MODEL BUT NOTE THAT WE WANT TO DEFAULT SOME OF THE VALUES,
+        // SO THE VALUES WE WANT TO DEFAULT WON'T BE BOUND UNTIL THE START BUTTON IS CLICKED
         simDetailsCurrentTurnLabel.textProperty().bind(simulationDataModel.getCurrentTurn().asString());
         simDetailsMaxTurnsLabel.textProperty().bind(simulationDataModel.getMaxTurns().asString());
-        simDetailsTotalGrassCutLabel.textProperty().bind(simulationDataModel.getTotalGrassCut().asString());
         simDetailsStaringGrassLabel.textProperty().bind(simulationDataModel.getStartingGrassToCut().asString());
         simDetailsRemainingPeriodTurnsLabel.textProperty().bind(simulationDataModel.getTurnsRemainingInPeriod().asString());
         simDetailsGopherPeriodLabel.textProperty().bind(simulationDataModel.getGopherPeriod().asString());
@@ -166,7 +184,71 @@ public class SidebarController implements Initializable
      */
     public void handleStartBtnClick()
     {
-        log.info("The start button was clicked");
+        // BIND SIM DETAILS THAT WERE DEFAULTED
+        simDetailsActiveMowerCountLabel.textProperty().bind(simulationDataModel.getActiveMowerCount().asString());
+        simDetailsTotalGrassCutLabel.textProperty().bind(simulationDataModel.getTotalGrassCut().asString());
+
+        simulationDataModel.incrementCurrentTurn();
+
+        lawnGridController.updateLawnUI();
+
+        displayButtonGroup(btnGroup2);
+    }
+
+    /**
+     * Handles when the next button is clicked
+     */
+    public void handleNextBtnClick()
+    {
+        // TODO: INSERT THE UPDATED SERVICE CALL HERE TO MAKE THE NEXT MOVE
+
+        log.info("CALLING THE MOWER SERVICE FOR THE NEXT MOVE");
+    }
+
+    /**
+     * Handles when the fast forward button is clicked
+     */
+    public void handleFastForwardBtnClick()
+    {
+        // TODO: INSERT THE UPDATED SERVICE CALL HERE TO RUN THE REST OF THE SIMULATION
+
+        log.info("CALLING THE MOWER SERVICE FOR THE NEXT MOVE");
+
+        // TODO: CHANGE THE VIEW TO THE FINAL VIEW HERE
+    }
+
+    /**
+     * Handles when the stop button is clicked
+     */
+    public void handleStopBtnClick()
+    {
+        log.info("STOPPING THE SIMULATION");
+
+        // TODO: CHANGE THE VIEW HERE TO GET THE FINAL VIEW AND DISABLE STUFF IN THE SIDEBAR
+
+        displayButtonGroup(btnGroup3);
+    }
+
+    /**
+     * Handles when the restart button is clicked
+     */
+    public void handleRestartBtnClick()
+    {
+        simulationDataModel.resetDataModel();
+
+        stageManager.switchScene(FXMLView.WELCOME);
+    }
+
+    /**
+     * Handles when the exit button is clicked
+     */
+    public void handleExitBtnClick()
+    {
+        simulationDataModel.resetDataModel();
+
+        stageManager.closeMainStage();
+
+        System.exit(0);
     }
 
     // PRIVATE METHODS
@@ -188,6 +270,18 @@ public class SidebarController implements Initializable
         else{
             icon.setGlyphName(SidebarCssConstant.COLLAPSED_SECTION_ICON_NAME);
         }
+    }
+
+    /**
+     * Displays a particular button group and ensures the others are hidden
+     *
+     * @param btnGroup - The button group to display
+     */
+    private void displayButtonGroup(final HBox btnGroup)
+    {
+        btnGroup1.setVisible(btnGroup1 == btnGroup);
+        btnGroup2.setVisible(btnGroup2 == btnGroup);
+        btnGroup3.setVisible(btnGroup3 == btnGroup);
     }
 
     // SPRING LOOKUPS
