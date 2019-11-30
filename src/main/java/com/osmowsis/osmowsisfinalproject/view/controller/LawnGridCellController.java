@@ -104,8 +104,8 @@ public class LawnGridCellController implements Initializable
     {
         final LawnSquareContent content = lawnSquare.getLawnSquareContent();
 
-        final int x = lawnSquare.getxCoordinate();
-        final int y = lawnSquare.getyCoordinate();
+        final int x = lawnSquare.getXCoordinate();
+        final int y = lawnSquare.getYCoordinate();
 
         // SET THE GRASS OR EMPTY BACK DROP BASED ON THE CONTENT
         if(content == LawnSquareContent.GRASS || content == LawnSquareContent.GRASS_GOPHER)

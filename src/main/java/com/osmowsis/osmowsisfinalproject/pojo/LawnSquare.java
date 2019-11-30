@@ -1,6 +1,8 @@
 package com.osmowsis.osmowsisfinalproject.pojo;
 
 import com.osmowsis.osmowsisfinalproject.constant.LawnSquareContent;
+import lombok.AllArgsConstructor;
+import lombok.Data;
 
 /**
  * Class that represents an individual lawn square
@@ -8,6 +10,8 @@ import com.osmowsis.osmowsisfinalproject.constant.LawnSquareContent;
  * Created on 9/11/2019
  */
 
+@Data
+@AllArgsConstructor
 public class LawnSquare
 {
     // FIELDS
@@ -15,32 +19,4 @@ public class LawnSquare
     private final int xCoordinate;
     private final int yCoordinate;
     private LawnSquareContent lawnSquareContent;
-
-    // CONSTRUCTORS
-    ///////////////////////////////////////////////////////////////////////////////////////////////////////////////////
-    public LawnSquare(int xCoordinate, int yCoordinate, LawnSquareContent lawnSquareContent)
-    {
-        this.xCoordinate = xCoordinate;
-        this.yCoordinate = yCoordinate;
-        this.lawnSquareContent = lawnSquareContent;
-    }
-
-    // ACCESS METHODS
-    ///////////////////////////////////////////////////////////////////////////////////////////////////////////////////
-    public int getxCoordinate() {
-        return xCoordinate;
-    }
-
-    public int getyCoordinate() {
-        return yCoordinate;
-    }
-
-    public LawnSquareContent getLawnSquareContent() {
-        return lawnSquareContent;
-    }
-
-    public void setLawnSquareContent(LawnSquareContent lawnSquareContent)
-    {
-        this.lawnSquareContent = lawnSquareContent;
-    }
 }

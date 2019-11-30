@@ -2,6 +2,8 @@ package com.osmowsis.osmowsisfinalproject.pojo;
 
 import com.osmowsis.osmowsisfinalproject.constant.Direction;
 import com.osmowsis.osmowsisfinalproject.constant.MowerMovementType;
+import lombok.EqualsAndHashCode;
+import lombok.Getter;
 import lombok.ToString;
 
 /**
@@ -10,7 +12,9 @@ import lombok.ToString;
  * Created by L. Arroyo onm 9/11/2019
  */
 
+@Getter
 @ToString
+@EqualsAndHashCode
 public class MowerMove
 {
     // FIELDS
@@ -53,35 +57,5 @@ public class MowerMove
         this.currentYCoordinate = currentYCoordinate;
         this.newXCoordinate = newXCoordinate;
         this.newYCoordinate = newYCoordinate;
-    }
-
-    // ACCESS METHODS
-    ///////////////////////////////////////////////////////////////////////////////////////////////////////////////////
-    public Mower getMower() {
-        return mower;
-    }
-
-    public MowerMovementType getMowerMovementType() {
-        return mowerMovementType;
-    }
-
-    public Direction getDirection() {
-        return direction;
-    }
-
-    public int getCurrentXCoordinate() {
-        return currentXCoordinate;
-    }
-
-    public int getCurrentYCoordinate() {
-        return currentYCoordinate;
-    }
-
-    public int getNewXCoordinate() {
-        return newXCoordinate;
-    }
-
-    public int getNewYCoordinate() {
-        return newYCoordinate;
     }
 }

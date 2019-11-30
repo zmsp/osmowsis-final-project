@@ -130,7 +130,7 @@ public class SimulationDataModel implements BaseDataModel
 
         for(LawnSquare lawnSquare : lawnSquares)
         {
-            if(lawnSquare.getxCoordinate() == x && lawnSquare.getyCoordinate() == y)
+            if(lawnSquare.getXCoordinate() == x && lawnSquare.getYCoordinate() == y)
             {
                 result = lawnSquare;
             }

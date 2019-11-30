@@ -3,7 +3,6 @@ package com.osmowsis.osmowsisfinalproject.service;
 import com.osmowsis.osmowsisfinalproject.constant.LawnSquareContent;
 import com.osmowsis.osmowsisfinalproject.model.SimulationDataModel;
 import com.osmowsis.osmowsisfinalproject.pojo.LawnSquare;
-import com.sun.org.apache.bcel.internal.generic.RETURN;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 

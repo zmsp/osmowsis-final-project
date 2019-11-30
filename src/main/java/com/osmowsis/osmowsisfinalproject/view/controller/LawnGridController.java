@@ -1,6 +1,5 @@
 package com.osmowsis.osmowsisfinalproject.view.controller;
 
-import com.osmowsis.osmowsisfinalproject.constant.CSS;
 import com.osmowsis.osmowsisfinalproject.constant.LawnSquareContent;
 import com.osmowsis.osmowsisfinalproject.model.SimulationDataModel;
 import com.osmowsis.osmowsisfinalproject.pojo.LawnSquare;
@@ -103,8 +102,8 @@ public class LawnGridController implements Initializable {
         // ADD THE LAWN CONTENT TO THE GRID
         for (LawnSquare square : simulationDataModel.getLawnSquares())
         {
-            int x = square.getxCoordinate();
-            int y = square.getyCoordinate();
+            int x = square.getXCoordinate();
+            int y = square.getYCoordinate();
 
             final LawnGridCellController controller = getLawnGridCellController();
             controller.setLawnSquare(square);
