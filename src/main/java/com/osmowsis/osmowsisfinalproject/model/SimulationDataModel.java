@@ -13,8 +13,7 @@ import lombok.Getter;
 import lombok.Setter;
 import org.springframework.stereotype.Repository;
 
-import java.util.ArrayDeque;
-import java.util.Deque;
+import java.util.*;
 
 /**
  * Central data model for the simulation
@@ -252,6 +251,8 @@ public class SimulationDataModel implements BaseDataModel
                                    final Direction startingDirection,
                                    final boolean strategic)
     {
+        List<LawnSquareContent> surroundingSquares = new ArrayList<>(Collections.nCopies(8, LawnSquareContent.UNKNOWN));
+
         Mower mower = new Mower();
         mower.setMowerNumber(mowers.size());
         mower.setCurrentDirection(startingDirection);
@@ -260,6 +261,7 @@ public class SimulationDataModel implements BaseDataModel
         mower.setCurrentEnergy(getStartingMowerEnergy());
         mower.setCurrentXCoordinate(xCoordinate);
         mower.setCurrentYCoordinate(yCoordinate);
+        mower.setSurroundingSquares(surroundingSquares);
 
         mowers.add(mower);
         mowerQueue.addLast(mower);

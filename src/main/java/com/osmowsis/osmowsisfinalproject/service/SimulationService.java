@@ -67,7 +67,7 @@ public class SimulationService {
             //gopherService.moveAllGophers();
         }
         else {
-            Mower mower = simulationDataModel.getCurrentMower();
+            Mower mower = simulationDataModel.getNextMower();
 
             mowerService.makeMove(mower);
 

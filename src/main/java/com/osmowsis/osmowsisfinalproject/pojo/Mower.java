@@ -25,4 +25,6 @@ public class Mower
     private boolean disabled;
     private boolean turnTaken;
     private List<LawnSquareContent> surroundingSquares;
+
+
 }

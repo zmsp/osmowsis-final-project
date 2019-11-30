@@ -2,8 +2,13 @@ package com.osmowsis.osmowsisfinalproject.service;
 
 import com.osmowsis.osmowsisfinalproject.model.SimulationDataModel;
 
+import com.osmowsis.osmowsisfinalproject.pojo.Gopher;
+import com.osmowsis.osmowsisfinalproject.pojo.Mower;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
+
+import java.util.Arrays;
+import java.util.List;
 
 @Service
 public class GopherService

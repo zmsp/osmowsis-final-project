@@ -275,7 +275,8 @@ public class MowerService
         final LawnSquare newSquare = lawnService.getLawnSquareByCoordinates(
                 move.getNewXCoordinate(), move.getNewYCoordinate());
 
-        final LawnSquareContent newContent = newSquare.getLawnSquareContent();
+        final LawnSquareContent newContent =
+                newSquare == null ? LawnSquareContent.FENCE : newSquare.getLawnSquareContent();
 
         final LawnSquare oldSquare = lawnService.getLawnSquareByCoordinates(
                 move.getCurrentXCoordinate(), move.getCurrentYCoordinate());
