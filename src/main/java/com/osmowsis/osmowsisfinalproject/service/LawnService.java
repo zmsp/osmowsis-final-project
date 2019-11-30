@@ -1,5 +1,6 @@
 package com.osmowsis.osmowsisfinalproject.service;
 
+import com.osmowsis.osmowsisfinalproject.constant.Direction;
 import com.osmowsis.osmowsisfinalproject.constant.LawnSquareContent;
 import com.osmowsis.osmowsisfinalproject.model.SimulationDataModel;
 import com.osmowsis.osmowsisfinalproject.pojo.LawnSquare;
@@ -103,5 +104,16 @@ public class LawnService
     public void incrementGrassCut()
     {
         simulationDataModel.incrementTotalGrassCut();
+    }
+
+    /**
+     * Gets long scan based on coordinates and direction
+     * @param x
+     * @param y
+     * @param d
+     */
+    public void getLawnSquareByDirection(int x, int y, Direction d) {
+
+
     }
 }
