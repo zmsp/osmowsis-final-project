@@ -67,3 +67,12 @@
     -fx-border-color: #1E1E26;
     -fx-border-width: 1px 0px 0px 0px;
 }
+
+/* CONSOLE DISPLAY */
+.text-area, .text-area .content{
+    -fx-background-color: #1E1E26;
+}
+
+.text-area .content{
+    -fx-background-radius: 0;
+}

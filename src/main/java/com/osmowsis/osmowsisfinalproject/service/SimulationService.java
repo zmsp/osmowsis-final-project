@@ -3,6 +3,7 @@ package com.osmowsis.osmowsisfinalproject.service;
 import com.osmowsis.osmowsisfinalproject.model.SimulationDataModel;
 import com.osmowsis.osmowsisfinalproject.pojo.Mower;
 import com.osmowsis.osmowsisfinalproject.view.controller.LawnGridController;
+import javafx.application.Platform;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -48,6 +49,8 @@ public class SimulationService {
      */
     public boolean takeNextMove()
     {
+        log.info("[SIM SERVICE] :: takeNextMove - Taking next move");
+
         final int turnsTaken = simulationDataModel.getCurrentTurn().get();
         final int gopherPeriod = simulationDataModel.getGopherPeriod().get();
 
@@ -73,7 +76,7 @@ public class SimulationService {
             simulationRiskProfileService.updateSimulationRiskProfile();
         }
 
-        lawnGridController.updateLawnUI();
+        Platform.runLater(() -> lawnGridController.updateLawnUI());
 
         if(isSimulationDone())
         {
@@ -90,6 +93,8 @@ public class SimulationService {
      */
     public void runFullSimulation()
     {
+        log.info("[SIM SERVICE] :: runFullSimulation - Running Full Simulation");
+
         while(!isSimulationDone())
         {
             if(takeNextMove())
@@ -110,9 +115,9 @@ public class SimulationService {
                 && simulationDataModel.getRemainingGrassToCut().get() > 0
                 && simulationDataModel.getActiveMowerCount().get() > 0)
         {
-            return true;
+            return false;
         }
 
-        return false;
+        return true;
     }
 }

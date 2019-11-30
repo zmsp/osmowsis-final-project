@@ -15,6 +15,7 @@ import javafx.beans.binding.Bindings;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 import javafx.scene.control.Label;
+import javafx.scene.control.TextArea;
 import javafx.scene.layout.HBox;
 import javafx.scene.layout.Region;
 import javafx.scene.layout.VBox;
@@ -75,9 +76,6 @@ public class SidebarController implements Initializable
     private Label simDetailsStaringGrassLabel;
 
     @FXML
-    private Label simDetailsRemainingPeriodTurnsLabel;
-
-    @FXML
     private Label simDetailsGopherPeriodLabel;
 
     @FXML
@@ -94,6 +92,9 @@ public class SidebarController implements Initializable
 
     @FXML
     private JFXListView<Gopher> gopherListView;
+
+    @FXML
+    private TextArea consoleTextArea;
 
     // CONSTRUCTORS
     ///////////////////////////////////////////////////////////////////////////////////////////////////////////////////
@@ -119,7 +120,6 @@ public class SidebarController implements Initializable
         simDetailsCurrentTurnLabel.textProperty().bind(simulationDataModel.getCurrentTurn().asString());
         simDetailsMaxTurnsLabel.textProperty().bind(simulationDataModel.getMaxTurns().asString());
         simDetailsStaringGrassLabel.textProperty().bind(simulationDataModel.getStartingGrassToCut().asString());
-        simDetailsRemainingPeriodTurnsLabel.textProperty().bind(simulationDataModel.getTurnsRemainingInPeriod().asString());
         simDetailsGopherPeriodLabel.textProperty().bind(simulationDataModel.getGopherPeriod().asString());
 
         // BINDS THE MOWER LIST VIEW TO THE ITEMS IN THE MODEL
@@ -146,6 +146,8 @@ public class SidebarController implements Initializable
 
         gopherListView.managedProperty().bind(gopherListView.visibleProperty());
 
+
+        consoleTextArea.setText("[MOWER 1] :: Moved from (0, 1) to (1, 0)");
     }
 
 

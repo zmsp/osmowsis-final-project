@@ -8,6 +8,7 @@
 <?import javafx.scene.Cursor?>
 <?import javafx.scene.control.Label?>
 <?import javafx.scene.control.Separator?>
+<?import javafx.scene.control.TextArea?>
 <?import javafx.scene.control.Tooltip?>
 <?import javafx.scene.layout.HBox?>
 <?import javafx.scene.layout.Region?>
@@ -15,9 +16,7 @@
 <?import javafx.scene.layout.VBox?>
 <?import javafx.scene.text.Font?>
 
-<VBox prefHeight="800.0" prefWidth="300.0" styleClass="sidebar-container" xmlns="http://javafx.com/javafx/8.0.171"
-      xmlns:fx="http://javafx.com/fxml/1"
-      fx:controller="com.osmowsis.osmowsisfinalproject.view.controller.SidebarController">
+<VBox prefHeight="800.0" prefWidth="300.0" styleClass="sidebar-container" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.osmowsis.osmowsisfinalproject.view.controller.SidebarController">
 
     <children>
         <!-- _____________________-->
@@ -27,37 +26,35 @@
             <children>
                 <Label prefHeight="60.0" styleClass="main-text" text="Osmowsis">
                     <font>
-                        <Font name="Ebrima Bold" size="26.0"/>
+                        <Font name="Ebrima Bold" size="26.0" />
                     </font>
                     <padding>
-                        <Insets left="10.0"/>
+                        <Insets left="10.0" />
                     </padding>
                 </Label>
 
-                <Separator maxHeight="-Infinity" minHeight="-Infinity" orientation="VERTICAL" prefHeight="35.0"
-                           styleClass="main-separator">
+                <Separator maxHeight="-Infinity" minHeight="-Infinity" orientation="VERTICAL" prefHeight="35.0" styleClass="main-separator">
                     <HBox.margin>
-                        <Insets left="7.0"/>
+                        <Insets left="7.0" />
                     </HBox.margin>
                 </Separator>
 
-                <Label layoutX="10.0" layoutY="10.0" prefHeight="60.0" styleClass="main-text" text="Portal"
-                       HBox.hgrow="ALWAYS">
+                <Label layoutX="10.0" layoutY="10.0" prefHeight="60.0" styleClass="main-text" text="Portal" HBox.hgrow="ALWAYS">
                     <font>
-                        <Font name="Roboto Light" size="24.0"/>
+                        <Font name="Roboto Light" size="24.0" />
                     </font>
                     <padding>
-                        <Insets left="5.0"/>
+                        <Insets left="5.0" />
                     </padding>
                 </Label>
 
-                <Region prefHeight="60.0"/>
+                <Region prefHeight="60.0" />
             </children>
         </HBox>
 
         <Separator prefWidth="200.0" styleClass="main-separator">
             <VBox.margin>
-                <Insets left="5.0" right="5.0"/>
+                <Insets left="5.0" right="5.0" />
             </VBox.margin>
         </Separator>
 
@@ -70,59 +67,55 @@
                 <!-- ___________________________-->
                 <!-- SIMULATION DETAILS BUTTON  -->
                 <!-- ___________________________-->
-                <HBox alignment="CENTER_LEFT" layoutX="15.0" layoutY="25.0"
-                      onMouseClicked="#handleSimulationDetailsBtnClick" styleClass="details-btn-container">
+                <HBox alignment="CENTER_LEFT" layoutX="15.0" layoutY="25.0" onMouseClicked="#handleSimulationDetailsBtnClick" styleClass="details-btn-container">
                     <children>
                         <FontAwesomeIconView glyphName="LIST" size="1.9em" styleClass="main-icon">
                             <HBox.margin>
-                                <Insets left="2.0" right="5.0" top="4.0"/>
+                                <Insets left="2.0" right="5.0" top="4.0" />
                             </HBox.margin>
                         </FontAwesomeIconView>
 
                         <Label styleClass="details-btn-label" text="SIMULATION DETAILS">
                             <font>
-                                <Font name="Roboto Light" size="18.0"/>
+                                <Font name="Roboto Light" size="18.0" />
                             </font>
                             <HBox.margin>
-                                <Insets left="2.0"/>
+                                <Insets left="2.0" />
                             </HBox.margin>
                         </Label>
 
-                        <Region HBox.hgrow="ALWAYS"/>
+                        <Region HBox.hgrow="ALWAYS" />
 
-                        <HBox alignment="CENTER" maxHeight="23.0" maxWidth="20.0" minHeight="23.0" minWidth="20.0"
-                              prefHeight="23.0" prefWidth="20.0">
+                        <HBox alignment="CENTER" maxHeight="23.0" maxWidth="20.0" minHeight="23.0" minWidth="20.0" prefHeight="23.0" prefWidth="20.0">
                             <children>
-                                <FontAwesomeIconView fx:id="simulationDetailsCollapsibleIcon" glyphName="ANGLE_DOWN"
-                                                     size="2.5EM"/>
+                                <FontAwesomeIconView fx:id="simulationDetailsCollapsibleIcon" glyphName="ANGLE_DOWN" size="2.5EM" />
                             </children>
                             <HBox.margin>
-                                <Insets right="5.0"/>
+                                <Insets right="5.0" />
                             </HBox.margin>
                             <padding>
-                                <Insets top="2.0"/>
+                                <Insets top="2.0" />
                             </padding>
                         </HBox>
                     </children>
 
                     <padding>
-                        <Insets bottom="15.0" top="12.0"/>
+                        <Insets bottom="15.0" top="12.0" />
                     </padding>
 
                     <VBox.margin>
-                        <Insets left="5.0" right="5.0" top="3.0"/>
+                        <Insets left="5.0" right="5.0" top="3.0" />
                     </VBox.margin>
 
                     <cursor>
-                        <Cursor fx:constant="HAND"/>
+                        <Cursor fx:constant="HAND" />
                     </cursor>
                 </HBox>
 
                 <!-- ____________________________-->
                 <!-- SIMULATION DETAILS CONTENT  -->
                 <!-- ____________________________-->
-                <VBox fx:id="simulationDetailsArea" maxHeight="75.0" minHeight="75.0" prefHeight="75.0"
-                      prefWidth="290.0" styleClass="details-area">
+                <VBox fx:id="simulationDetailsArea" maxHeight="60.0" minHeight="60.0" prefHeight="60.0" prefWidth="290.0" styleClass="details-area">
                     <children>
 
                         <!-- _______________-->
@@ -134,12 +127,12 @@
                                     <children>
                                         <Label styleClass="main-text" text="Current Mower:">
                                             <HBox.margin>
-                                                <Insets right="3.0"/>
+                                                <Insets right="3.0" />
                                             </HBox.margin>
                                         </Label>
                                         <Label fx:id="simDetailsCurrentMowerLabel" styleClass="main-text" text="N/A">
                                             <font>
-                                                <Font name="System Bold" size="12.0"/>
+                                                <Font name="System Bold" size="12.0" />
                                             </font>
                                         </Label>
                                     </children>
@@ -148,12 +141,12 @@
                                     <children>
                                         <Label styleClass="main-text" text="Active Mowers:">
                                             <HBox.margin>
-                                                <Insets right="3.0"/>
+                                                <Insets right="3.0" />
                                             </HBox.margin>
                                         </Label>
                                         <Label fx:id="simDetailsActiveMowerCountLabel" styleClass="main-text" text="0">
                                             <font>
-                                                <Font name="System Bold" size="12.0"/>
+                                                <Font name="System Bold" size="12.0" />
                                             </font>
                                         </Label>
                                     </children>
@@ -168,12 +161,33 @@
                             <children>
                                 <HBox prefWidth="180.0">
                                     <children>
+
                                         <Label styleClass="main-text" text="Current Turn:">
                                             <HBox.margin>
                                                 <Insets right="3.0"/>
                                             </HBox.margin>
                                         </Label>
+
                                         <Label fx:id="simDetailsCurrentTurnLabel" styleClass="main-text" text="0">
+                                            <font>
+                                                <Font name="System Bold" size="12.0"/>
+                                            </font>
+                                            <HBox.margin>
+                                                <Insets right="3.0"/>
+                                            </HBox.margin>
+                                        </Label>
+
+                                        <Label layoutX="83.0" layoutY="10.0" styleClass="main-text" text="of">
+                                            <font>
+                                                <Font name="System Bold" size="12.0"/>
+                                            </font>
+                                            <HBox.margin>
+                                                <Insets right="3.0"/>
+                                            </HBox.margin>
+                                        </Label>
+
+                                        <Label fx:id="simDetailsMaxTurnsLabel" layoutX="90.0" layoutY="10.0"
+                                               styleClass="main-text" text="0">
                                             <font>
                                                 <Font name="System Bold" size="12.0"/>
                                             </font>
@@ -182,12 +196,14 @@
                                 </HBox>
                                 <HBox layoutX="10.0" layoutY="10.0">
                                     <children>
-                                        <Label styleClass="main-text" text="Max Turns:">
+
+                                        <Label styleClass="main-text" text="Gopher Period:">
                                             <HBox.margin>
                                                 <Insets right="3.0"/>
                                             </HBox.margin>
                                         </Label>
-                                        <Label fx:id="simDetailsMaxTurnsLabel" styleClass="main-text" text="0">
+
+                                        <Label fx:id="simDetailsGopherPeriodLabel" styleClass="main-text" text="4">
                                             <font>
                                                 <Font name="System Bold" size="12.0"/>
                                             </font>
@@ -206,12 +222,12 @@
                                     <children>
                                         <Label styleClass="main-text" text="Total Grass Cut:">
                                             <HBox.margin>
-                                                <Insets right="3.0"/>
+                                                <Insets right="3.0" />
                                             </HBox.margin>
                                         </Label>
                                         <Label fx:id="simDetailsTotalGrassCutLabel" styleClass="main-text" text="0">
                                             <font>
-                                                <Font name="System Bold" size="12.0"/>
+                                                <Font name="System Bold" size="12.0" />
                                             </font>
                                         </Label>
                                     </children>
@@ -220,49 +236,12 @@
                                     <children>
                                         <Label styleClass="main-text" text="Starting Grass:">
                                             <HBox.margin>
-                                                <Insets right="3.0"/>
+                                                <Insets right="3.0" />
                                             </HBox.margin>
                                         </Label>
                                         <Label fx:id="simDetailsStaringGrassLabel" styleClass="main-text" text="0">
                                             <font>
-                                                <Font name="System Bold" size="12.0"/>
-                                            </font>
-                                        </Label>
-                                    </children>
-                                </HBox>
-                            </children>
-                        </HBox>
-
-                        <!-- _______________-->
-                        <!-- CONTENT ROW 4  -->
-                        <!-- _______________-->
-                        <HBox layoutX="15.0" layoutY="48.0">
-                            <children>
-                                <HBox prefWidth="180.0">
-                                    <children>
-                                        <Label styleClass="main-text" text="Turns Left in Period:">
-                                            <HBox.margin>
-                                                <Insets right="3.0"/>
-                                            </HBox.margin>
-                                        </Label>
-                                        <Label fx:id="simDetailsRemainingPeriodTurnsLabel" styleClass="main-text"
-                                               text="4">
-                                            <font>
-                                                <Font name="System Bold" size="12.0"/>
-                                            </font>
-                                        </Label>
-                                    </children>
-                                </HBox>
-                                <HBox layoutX="10.0" layoutY="10.0">
-                                    <children>
-                                        <Label styleClass="main-text" text="Gopher Period">
-                                            <HBox.margin>
-                                                <Insets right="3.0"/>
-                                            </HBox.margin>
-                                        </Label>
-                                        <Label fx:id="simDetailsGopherPeriodLabel" styleClass="main-text" text="4">
-                                            <font>
-                                                <Font name="System Bold" size="12.0"/>
+                                                <Font name="System Bold" size="12.0" />
                                             </font>
                                         </Label>
                                     </children>
@@ -272,130 +251,138 @@
                     </children>
 
                     <VBox.margin>
-                        <Insets left="5.0" right="5.0"/>
+                        <Insets left="5.0" right="5.0" />
                     </VBox.margin>
 
                     <padding>
-                        <Insets left="5.0" top="4.0"/>
+                        <Insets left="5.0" top="4.0" />
                     </padding>
                 </VBox>
 
                 <!-- ______________________-->
                 <!-- MOWER DETAILS BUTTON  -->
                 <!-- ______________________-->
-                <HBox alignment="CENTER_LEFT" onMouseClicked="#handleMowerDetailsBtnClick"
-                      styleClass="details-btn-container">
+                <HBox alignment="CENTER_LEFT" onMouseClicked="#handleMowerDetailsBtnClick" styleClass="details-btn-container">
                     <children>
                         <FontAwesomeIconView glyphName="LIST" size="1.9em" styleClass="main-icon">
                             <HBox.margin>
-                                <Insets left="2.0" right="5.0" top="4.0"/>
+                                <Insets left="2.0" right="5.0" top="4.0" />
                             </HBox.margin>
                         </FontAwesomeIconView>
 
                         <Label styleClass="details-btn-label" text="MOWER DETAILS">
                             <font>
-                                <Font name="Roboto Light" size="18.0"/>
+                                <Font name="Roboto Light" size="18.0" />
                             </font>
                             <HBox.margin>
-                                <Insets left="2.0"/>
+                                <Insets left="2.0" />
                             </HBox.margin>
                         </Label>
 
-                        <Region HBox.hgrow="ALWAYS"/>
+                        <Region HBox.hgrow="ALWAYS" />
 
-                        <HBox alignment="CENTER" maxHeight="23.0" maxWidth="20.0" minHeight="23.0" minWidth="20.0"
-                              prefHeight="23.0" prefWidth="20.0">
+                        <HBox alignment="CENTER" maxHeight="23.0" maxWidth="20.0" minHeight="23.0" minWidth="20.0" prefHeight="23.0" prefWidth="20.0">
                             <children>
-                                <FontAwesomeIconView fx:id="mowerDetailsCollapsibleIcon" glyphName="ANGLE_DOWN"
-                                                     size="2.5EM"/>
+                                <FontAwesomeIconView fx:id="mowerDetailsCollapsibleIcon" glyphName="ANGLE_DOWN" size="2.5EM" />
                             </children>
 
                             <HBox.margin>
-                                <Insets right="5.0"/>
+                                <Insets right="5.0" />
                             </HBox.margin>
 
                             <padding>
-                                <Insets top="2.0"/>
+                                <Insets top="2.0" />
                             </padding>
                         </HBox>
                     </children>
 
                     <padding>
-                        <Insets bottom="15.0" top="12.0"/>
+                        <Insets bottom="15.0" top="12.0" />
                     </padding>
 
                     <VBox.margin>
-                        <Insets left="5.0" right="5.0" top="3.0"/>
+                        <Insets left="5.0" right="5.0" top="3.0" />
                     </VBox.margin>
 
                     <cursor>
-                        <Cursor fx:constant="HAND"/>
+                        <Cursor fx:constant="HAND" />
                     </cursor>
                 </HBox>
 
                 <!-- _______________________-->
                 <!-- MOWER DETAILS CONTENT  -->
                 <!-- _______________________-->
-                <JFXListView fx:id="mowerListView" focusTraversable="false" prefHeight="500.0"/>
+                <JFXListView fx:id="mowerListView" focusTraversable="false" prefHeight="500.0" />
 
                 <!-- _______________________-->
                 <!-- GOPHER DETAILS BUTTON  -->
                 <!-- _______________________-->
-                <HBox alignment="CENTER_LEFT" onMouseClicked="#handleGopherDetailsBtnClick"
-                      styleClass="details-btn-container">
+                <HBox alignment="CENTER_LEFT" onMouseClicked="#handleGopherDetailsBtnClick" styleClass="details-btn-container">
                     <children>
 
                         <FontAwesomeIconView glyphName="LIST" size="1.9em" styleClass="main-icon">
                             <HBox.margin>
-                                <Insets left="2.0" right="5.0" top="4.0"/>
+                                <Insets left="2.0" right="5.0" top="4.0" />
                             </HBox.margin>
                         </FontAwesomeIconView>
 
                         <Label styleClass="details-btn-label" text="GOPHER DETAILS">
                             <font>
-                                <Font name="Roboto Light" size="18.0"/>
+                                <Font name="Roboto Light" size="18.0" />
                             </font>
                             <HBox.margin>
-                                <Insets left="2.0"/>
+                                <Insets left="2.0" />
                             </HBox.margin>
                         </Label>
 
-                        <Region HBox.hgrow="ALWAYS"/>
+                        <Region HBox.hgrow="ALWAYS" />
 
-                        <HBox alignment="CENTER" maxHeight="23.0" maxWidth="20.0" minHeight="23.0" minWidth="20.0"
-                              prefHeight="23.0" prefWidth="20.0">
+                        <HBox alignment="CENTER" maxHeight="23.0" maxWidth="20.0" minHeight="23.0" minWidth="20.0" prefHeight="23.0" prefWidth="20.0">
                             <children>
-                                <FontAwesomeIconView fx:id="gopherDetailsCollapsibleIcon" glyphName="ANGLE_DOWN"
-                                                     size="2.5EM"/>
+                                <FontAwesomeIconView fx:id="gopherDetailsCollapsibleIcon" glyphName="ANGLE_DOWN" size="2.5EM" />
                             </children>
 
                             <HBox.margin>
-                                <Insets right="5.0"/>
+                                <Insets right="5.0" />
                             </HBox.margin>
 
                             <padding>
-                                <Insets top="2.0"/>
+                                <Insets top="2.0" />
                             </padding>
                         </HBox>
                     </children>
 
                     <padding>
-                        <Insets bottom="15.0" top="12.0"/>
+                        <Insets bottom="15.0" top="12.0" />
                     </padding>
 
                     <VBox.margin>
-                        <Insets left="5.0" right="5.0" top="3.0"/>
+                        <Insets left="5.0" right="5.0" top="3.0" />
                     </VBox.margin>
 
                     <cursor>
-                        <Cursor fx:constant="HAND"/>
+                        <Cursor fx:constant="HAND" />
                     </cursor>
                 </HBox>
 
                 <!-- ________________________-->
                 <!-- GOPHER DETAILS CONTENT  -->
                 <!-- ________________________-->
-                <JFXListView fx:id="gopherListView" focusTraversable="false"/>
+                <JFXListView fx:id="gopherListView" focusTraversable="false" />
+
+                <!-- _________-->
+                <!-- CONSOLE  -->
+                <!-- _________-->
+                <HBox prefHeight="75.0" prefWidth="290.0" styleClass="details-area">
+                    <TextArea fx:id="consoleTextArea" focusTraversable="false" maxHeight="75.0" prefWidth="290.0">
+                        <VBox.margin>
+                            <Insets left="5.0" right="5.0" />
+                        </VBox.margin>
+                    </TextArea>
+               <VBox.margin>
+                  <Insets left="5.0" right="5.0" />
+               </VBox.margin>
+                </HBox>
             </children>
         </VBox>
 
@@ -408,76 +395,66 @@
                 <!-- ________________-->
                 <!-- BUTTON GROUP 1  -->
                 <!-- ________________-->
-                <HBox fx:id="btnGroup1" alignment="CENTER_LEFT" maxHeight="75.0" minHeight="75.0" prefHeight="75.0"
-                      styleClass="sidebar-footer-btn-container">
+                <HBox fx:id="btnGroup1" alignment="CENTER_LEFT" maxHeight="75.0" minHeight="75.0" prefHeight="75.0" styleClass="sidebar-footer-btn-container">
                     <children>
 
                         <!-- ________________-->
                         <!-- SETTINGS BUTTON -->
                         <!-- ________________-->
-                        <JFXButton focusTraversable="false" graphicTextGap="10.0" maxHeight="-Infinity"
-                                   maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity"
-                                   onMouseClicked="#handleSimulationSettingsBtnClick" prefHeight="45.0"
-                                   prefWidth="125.0" styleClass="main-btn" text="Settings">
+                        <JFXButton focusTraversable="false" graphicTextGap="10.0" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" onMouseClicked="#handleSimulationSettingsBtnClick" prefHeight="45.0" prefWidth="125.0" styleClass="main-btn" text="Settings">
                             <graphic>
-                                <FontAwesomeIconView boundsType="LOGICAL_VERTICAL_CENTER" glyphName="COG" size="2.0em"
-                                                     styleClass="main-icon" wrappingWidth="19.542856216430664">
+                                <FontAwesomeIconView boundsType="LOGICAL_VERTICAL_CENTER" glyphName="COG" size="2.0em" styleClass="main-icon" wrappingWidth="19.542856216430664">
                                     <cursor>
-                                        <Cursor fx:constant="HAND"/>
+                                        <Cursor fx:constant="HAND" />
                                     </cursor>
                                 </FontAwesomeIconView>
                             </graphic>
 
                             <cursor>
-                                <Cursor fx:constant="HAND"/>
+                                <Cursor fx:constant="HAND" />
                             </cursor>
 
                             <tooltip>
-                                <Tooltip text="Simulation Settings"/>
+                                <Tooltip text="Simulation Settings" />
                             </tooltip>
 
                             <HBox.margin>
-                                <Insets left="2.0"/>
+                                <Insets left="2.0" />
                             </HBox.margin>
 
                             <font>
-                                <Font size="14.0"/>
+                                <Font size="14.0" />
                             </font>
                         </JFXButton>
 
-                        <Region prefHeight="200.0" prefWidth="200.0" HBox.hgrow="ALWAYS"/>
+                        <Region prefHeight="200.0" prefWidth="200.0" HBox.hgrow="ALWAYS" />
 
                         <!-- _____________-->
                         <!-- START BUTTON -->
                         <!-- _____________-->
-                        <JFXButton focusTraversable="false" graphicTextGap="10.0" maxHeight="-Infinity"
-                                   maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity"
-                                   onMouseClicked="#handleStartBtnClick" prefHeight="45.0" prefWidth="125.0"
-                                   styleClass="main-btn" text="Start">
+                        <JFXButton focusTraversable="false" graphicTextGap="10.0" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" onMouseClicked="#handleStartBtnClick" prefHeight="45.0" prefWidth="125.0" styleClass="main-btn" text="Start">
                             <graphic>
-                                <FontAwesomeIconView boundsType="LOGICAL_VERTICAL_CENTER" glyphName="SIGN_OUT"
-                                                     size="2.0em" styleClass="main-icon"
-                                                     wrappingWidth="19.619089126586914">
+                                <FontAwesomeIconView boundsType="LOGICAL_VERTICAL_CENTER" glyphName="SIGN_OUT" size="2.0em" styleClass="main-icon" wrappingWidth="19.619089126586914">
                                     <cursor>
-                                        <Cursor fx:constant="HAND"/>
+                                        <Cursor fx:constant="HAND" />
                                     </cursor>
                                 </FontAwesomeIconView>
                             </graphic>
 
                             <cursor>
-                                <Cursor fx:constant="HAND"/>
+                                <Cursor fx:constant="HAND" />
                             </cursor>
 
                             <tooltip>
-                                <Tooltip text="Start Simulation"/>
+                                <Tooltip text="Start Simulation" />
                             </tooltip>
 
                             <HBox.margin>
-                                <Insets right="2.0"/>
+                                <Insets right="2.0" />
                             </HBox.margin>
 
                             <font>
-                                <Font size="14.0"/>
+                                <Font size="14.0" />
                             </font>
                         </JFXButton>
                     </children>
@@ -486,94 +463,79 @@
                 <!-- ________________-->
                 <!-- BUTTON GROUP 2  -->
                 <!-- ________________-->
-                <HBox fx:id="btnGroup2" alignment="CENTER_LEFT" layoutX="10.0" layoutY="10.0" maxHeight="75.0" minHeight="75.0"
-                      prefHeight="75.0" styleClass="sidebar-footer-btn-container" visible="false">
+                <HBox fx:id="btnGroup2" alignment="CENTER_LEFT" layoutX="10.0" layoutY="10.0" maxHeight="75.0" minHeight="75.0" prefHeight="75.0" styleClass="sidebar-footer-btn-container" visible="false">
                     <children>
 
                         <!-- _____________-->
                         <!-- STOP BUTTON  -->
                         <!-- _____________-->
-                        <JFXButton focusTraversable="false" graphicTextGap="0.0" maxHeight="-Infinity"
-                                   maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity"
-                                   onMouseClicked="#handleStopBtnClick" prefHeight="45.0" prefWidth="80.0"
-                                   styleClass="main-btn" text="Stop">
+                        <JFXButton focusTraversable="false" graphicTextGap="0.0" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" onMouseClicked="#handleStopBtnClick" prefHeight="45.0" prefWidth="80.0" styleClass="main-btn" text="Stop">
                             <graphic>
-                                <FontAwesomeIconView boundsType="LOGICAL_VERTICAL_CENTER" glyphName="STOP" size="1.2em"
-                                                     styleClass="main-icon" wrappingWidth="19.542856216430664">
+                                <FontAwesomeIconView boundsType="LOGICAL_VERTICAL_CENTER" glyphName="STOP" size="1.2em" styleClass="main-icon" wrappingWidth="19.542856216430664">
                                     <cursor>
-                                        <Cursor fx:constant="HAND"/>
+                                        <Cursor fx:constant="HAND" />
                                     </cursor>
                                 </FontAwesomeIconView>
                             </graphic>
                             <cursor>
-                                <Cursor fx:constant="HAND"/>
+                                <Cursor fx:constant="HAND" />
                             </cursor>
                             <tooltip>
-                                <Tooltip text="Stop Simulation"/>
+                                <Tooltip text="Stop Simulation" />
                             </tooltip>
                             <HBox.margin>
-                                <Insets left="2.0"/>
+                                <Insets left="2.0" />
                             </HBox.margin>
                             <font>
-                                <Font size="14.0"/>
+                                <Font size="14.0" />
                             </font>
                         </JFXButton>
 
-                        <Region prefHeight="200.0" prefWidth="200.0" HBox.hgrow="ALWAYS"/>
+                        <Region prefHeight="200.0" prefWidth="200.0" HBox.hgrow="ALWAYS" />
 
                         <!-- _____________-->
                         <!-- NEXT BUTTON  -->
                         <!-- _____________-->
-                        <JFXButton focusTraversable="false" graphicTextGap="0.0" layoutX="151.0" layoutY="26.0"
-                                   maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity"
-                                   onMouseClicked="#handleNextBtnClick" prefHeight="45.0" prefWidth="80.0"
-                                   styleClass="main-btn" text="Next">
+                        <JFXButton focusTraversable="false" graphicTextGap="0.0" layoutX="151.0" layoutY="26.0" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" onMouseClicked="#handleNextBtnClick" prefHeight="45.0" prefWidth="80.0" styleClass="main-btn" text="Next">
                             <graphic>
-                                <FontAwesomeIconView boundsType="LOGICAL_VERTICAL_CENTER" glyphName="STEP_FORWARD"
-                                                     size="1.3em" styleClass="main-icon"
-                                                     wrappingWidth="19.542856216430664">
+                                <FontAwesomeIconView boundsType="LOGICAL_VERTICAL_CENTER" glyphName="STEP_FORWARD" size="1.3em" styleClass="main-icon" wrappingWidth="19.542856216430664">
                                     <cursor>
-                                        <Cursor fx:constant="HAND"/>
+                                        <Cursor fx:constant="HAND" />
                                     </cursor>
                                 </FontAwesomeIconView>
                             </graphic>
                             <cursor>
-                                <Cursor fx:constant="HAND"/>
+                                <Cursor fx:constant="HAND" />
                             </cursor>
                             <tooltip>
-                                <Tooltip text="Next Move"/>
+                                <Tooltip text="Next Move" />
                             </tooltip>
                             <font>
-                                <Font size="14.0"/>
+                                <Font size="14.0" />
                             </font>
                         </JFXButton>
 
-                        <Region layoutX="92.0" layoutY="11.0" prefHeight="200.0" prefWidth="200.0"/>
+                        <Region layoutX="92.0" layoutY="11.0" prefHeight="200.0" prefWidth="200.0" />
 
                         <!-- ___________-->
                         <!-- FF BUTTON  -->
                         <!-- ___________-->
-                        <JFXButton focusTraversable="false" graphicTextGap="0.0" layoutX="12.0" layoutY="26.0"
-                                   maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity"
-                                   onMouseClicked="#handleFastForwardBtnClick" prefHeight="45.0" prefWidth="80.0"
-                                   styleClass="main-btn" text="FF">
+                        <JFXButton focusTraversable="false" graphicTextGap="0.0" layoutX="12.0" layoutY="26.0" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" onMouseClicked="#handleFastForwardBtnClick" prefHeight="45.0" prefWidth="80.0" styleClass="main-btn" text="FF">
                             <graphic>
-                                <FontAwesomeIconView boundsType="LOGICAL_VERTICAL_CENTER" glyphName="FAST_FORWARD"
-                                                     size="1.2em" styleClass="main-icon"
-                                                     wrappingWidth="19.542856216430664">
+                                <FontAwesomeIconView boundsType="LOGICAL_VERTICAL_CENTER" glyphName="FAST_FORWARD" size="1.2em" styleClass="main-icon" wrappingWidth="19.542856216430664">
                                     <cursor>
-                                        <Cursor fx:constant="HAND"/>
+                                        <Cursor fx:constant="HAND" />
                                     </cursor>
                                 </FontAwesomeIconView>
                             </graphic>
                             <cursor>
-                                <Cursor fx:constant="HAND"/>
+                                <Cursor fx:constant="HAND" />
                             </cursor>
                             <tooltip>
-                                <Tooltip text="Fast Forward"/>
+                                <Tooltip text="Fast Forward" />
                             </tooltip>
                             <font>
-                                <Font size="14.0"/>
+                                <Font size="14.0" />
                             </font>
                         </JFXButton>
                     </children>
@@ -582,69 +544,58 @@
                 <!-- ________________-->
                 <!-- BUTTON GROUP 3  -->
                 <!-- ________________-->
-                <HBox fx:id="btnGroup3" alignment="CENTER_LEFT" layoutX="10.0" layoutY="10.0" maxHeight="75.0" minHeight="75.0"
-                      prefHeight="75.0" styleClass="sidebar-footer-btn-container" visible="false">
+                <HBox fx:id="btnGroup3" alignment="CENTER_LEFT" layoutX="10.0" layoutY="10.0" maxHeight="75.0" minHeight="75.0" prefHeight="75.0" styleClass="sidebar-footer-btn-container" visible="false">
                     <children>
 
                         <!-- ________________-->
                         <!-- RESTART BUTTON  -->
                         <!-- ________________-->
-                        <JFXButton focusTraversable="false" graphicTextGap="10.0" maxHeight="-Infinity"
-                                   maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity"
-                                   onMouseClicked="#handleRestartBtnClick" prefHeight="45.0"
-                                   prefWidth="125.0" styleClass="main-btn" text="Restart">
+                        <JFXButton focusTraversable="false" graphicTextGap="10.0" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" onMouseClicked="#handleRestartBtnClick" prefHeight="45.0" prefWidth="125.0" styleClass="main-btn" text="Restart">
                             <graphic>
-                                <FontAwesomeIconView boundsType="LOGICAL_VERTICAL_CENTER" glyphName="REPEAT"
-                                                     size="2.0em" styleClass="main-icon"
-                                                     wrappingWidth="19.542856216430664">
+                                <FontAwesomeIconView boundsType="LOGICAL_VERTICAL_CENTER" glyphName="REPEAT" size="2.0em" styleClass="main-icon" wrappingWidth="19.542856216430664">
                                     <cursor>
-                                        <Cursor fx:constant="HAND"/>
+                                        <Cursor fx:constant="HAND" />
                                     </cursor>
                                 </FontAwesomeIconView>
                             </graphic>
                             <cursor>
-                                <Cursor fx:constant="HAND"/>
+                                <Cursor fx:constant="HAND" />
                             </cursor>
                             <tooltip>
-                                <Tooltip text="New Simulation"/>
+                                <Tooltip text="New Simulation" />
                             </tooltip>
                             <HBox.margin>
-                                <Insets left="2.0"/>
+                                <Insets left="2.0" />
                             </HBox.margin>
                             <font>
-                                <Font size="14.0"/>
+                                <Font size="14.0" />
                             </font>
                         </JFXButton>
 
-                        <Region prefHeight="200.0" prefWidth="200.0" HBox.hgrow="ALWAYS"/>
+                        <Region prefHeight="200.0" prefWidth="200.0" HBox.hgrow="ALWAYS" />
 
                         <!-- ________________-->
                         <!-- EXIT BUTTON  -->
                         <!-- ________________-->
-                        <JFXButton focusTraversable="false" graphicTextGap="10.0" maxHeight="-Infinity"
-                                   maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity"
-                                   onMouseClicked="#handleExitBtnClick" prefHeight="45.0" prefWidth="125.0"
-                                   styleClass="main-btn" text="Exit">
+                        <JFXButton focusTraversable="false" graphicTextGap="10.0" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" onMouseClicked="#handleExitBtnClick" prefHeight="45.0" prefWidth="125.0" styleClass="main-btn" text="Exit">
                             <graphic>
-                                <FontAwesomeIconView boundsType="LOGICAL_VERTICAL_CENTER" glyphName="SIGN_OUT"
-                                                     size="2.0em" styleClass="main-icon"
-                                                     wrappingWidth="19.619089126586914">
+                                <FontAwesomeIconView boundsType="LOGICAL_VERTICAL_CENTER" glyphName="SIGN_OUT" size="2.0em" styleClass="main-icon" wrappingWidth="19.619089126586914">
                                     <cursor>
-                                        <Cursor fx:constant="HAND"/>
+                                        <Cursor fx:constant="HAND" />
                                     </cursor>
                                 </FontAwesomeIconView>
                             </graphic>
                             <cursor>
-                                <Cursor fx:constant="HAND"/>
+                                <Cursor fx:constant="HAND" />
                             </cursor>
                             <tooltip>
-                                <Tooltip text="Exit Simulation"/>
+                                <Tooltip text="Exit Simulation" />
                             </tooltip>
                             <HBox.margin>
-                                <Insets right="2.0"/>
+                                <Insets right="2.0" />
                             </HBox.margin>
                             <font>
-                                <Font size="14.0"/>
+                                <Font size="14.0" />
                             </font>
                         </JFXButton>
                     </children>
@@ -652,7 +603,7 @@
             </children>
 
             <VBox.margin>
-                <Insets left="10.0" right="10.0"/>
+                <Insets left="5.0" right="5.0" />
             </VBox.margin>
         </StackPane>
     </children>
@@ -661,6 +612,6 @@
     <!-- CSS STYLESHEETS -->
     <!-- ________________-->
     <stylesheets>
-        <URL value="@Sidebar.css"/>
+        <URL value="@Sidebar.css" />
     </stylesheets>
 </VBox>
