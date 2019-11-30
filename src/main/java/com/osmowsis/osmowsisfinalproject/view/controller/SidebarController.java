@@ -147,7 +147,7 @@ public class SidebarController implements Initializable
         gopherListView.managedProperty().bind(gopherListView.visibleProperty());
 
 
-        consoleTextArea.setText("[MOWER 1] :: Moved from (0, 1) to (1, 0)");
+        consoleTextArea.setText("Click Start to begin the simulation!");
     }
 
 
