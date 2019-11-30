@@ -49,14 +49,13 @@ public class SimulationService {
     public boolean takeNextMove()
     {
         final int turnsTaken = simulationDataModel.getCurrentTurn().get();
-        final int maxTurns = simulationDataModel.getMaxTurns().get();
         final int gopherPeriod = simulationDataModel.getGopherPeriod().get();
 
         if(turnsTaken == 0 || mowerService.areAllMowerTurnsTaken())
         {
             simulationDataModel.incrementCurrentTurn();
 
-            mowerService.areAllMowerTurnsTaken();
+            mowerService.resetTurnInfoForActiveMowers();
         }
 
         if (turnsTaken % gopherPeriod == 0)

@@ -2,6 +2,7 @@ package com.osmowsis.osmowsisfinalproject.pojo;
 
 import com.osmowsis.osmowsisfinalproject.constant.Direction;
 import com.osmowsis.osmowsisfinalproject.constant.MowerMovementType;
+import lombok.ToString;
 
 /**
  * Class represents a move a mower can attempt to make
@@ -9,6 +10,7 @@ import com.osmowsis.osmowsisfinalproject.constant.MowerMovementType;
  * Created by L. Arroyo onm 9/11/2019
  */
 
+@ToString
 public class MowerMove
 {
     // FIELDS
