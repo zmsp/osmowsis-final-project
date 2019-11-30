@@ -1,9 +1,7 @@
 package com.osmowsis.osmowsisfinalproject.view.controller;
 
-import com.osmowsis.osmowsisfinalproject.constant.DataInputMowerCellCssConstant;
+import com.osmowsis.osmowsisfinalproject.constant.CSS;
 import com.osmowsis.osmowsisfinalproject.constant.FXMLView;
-import com.osmowsis.osmowsisfinalproject.constant.MowerUIConstant;
-import com.osmowsis.osmowsisfinalproject.constant.SidebarCssConstant;
 import com.osmowsis.osmowsisfinalproject.model.SimulationDataModel;
 import com.osmowsis.osmowsisfinalproject.pojo.Mower;
 import de.jensd.fx.glyphs.fontawesome.FontAwesomeIconView;
@@ -126,16 +124,16 @@ public class SidebarMowerCellController
     private void updatePowerIcon(final Mower mower)
     {
         if(mower.isDisabled()
-                && !powerIcon.getStyleClass().contains(DataInputMowerCellCssConstant.POWER_ICON_DISABLED_CLASS))
+                && !powerIcon.getStyleClass().contains(CSS.POWER_ICON_DISABLED_CLASS))
         {
-            powerIcon.getStyleClass().remove(DataInputMowerCellCssConstant.POWER_ICON_ACTIVE_CLASS);
-            powerIcon.getStyleClass().add(DataInputMowerCellCssConstant.POWER_ICON_DISABLED_CLASS);
+            powerIcon.getStyleClass().remove(CSS.POWER_ICON_ACTIVE_CLASS);
+            powerIcon.getStyleClass().add(CSS.POWER_ICON_DISABLED_CLASS);
         }
         else if(!mower.isDisabled()
-                && !powerIcon.getStyleClass().contains(DataInputMowerCellCssConstant.POWER_ICON_ACTIVE_CLASS))
+                && !powerIcon.getStyleClass().contains(CSS.POWER_ICON_ACTIVE_CLASS))
         {
-            powerIcon.getStyleClass().remove(DataInputMowerCellCssConstant.POWER_ICON_DISABLED_CLASS);
-            powerIcon.getStyleClass().add(DataInputMowerCellCssConstant.POWER_ICON_ACTIVE_CLASS);
+            powerIcon.getStyleClass().remove(CSS.POWER_ICON_DISABLED_CLASS);
+            powerIcon.getStyleClass().add(CSS.POWER_ICON_ACTIVE_CLASS);
         }
     }
 
@@ -146,7 +144,7 @@ public class SidebarMowerCellController
      */
     private void updateMowerName(final Mower mower)
     {
-        mowerName.setText(MowerUIConstant.MOWER_NAME_PREFIX + " " + (mower.getMowerNumber() + 1));
+        mowerName.setText(CSS.MOWER_NAME_PREFIX + " " + (mower.getMowerNumber() + 1));
     }
 
     /**
@@ -154,14 +152,14 @@ public class SidebarMowerCellController
      */
     private void updateSmartIcon(final Mower mower)
     {
-        if(mower.isStrategic() && !smartIcon.getStyleClass().contains(SidebarCssConstant.SMART_ICON_ACTIVE))
+        if(mower.isStrategic() && !smartIcon.getStyleClass().contains(CSS.SMART_ICON_ACTIVE))
         {
-            smartIcon.getStyleClass().remove(SidebarCssConstant.SMART_ICON_DISABLED);
-            smartIcon.getStyleClass().add(SidebarCssConstant.SMART_ICON_ACTIVE);
+            smartIcon.getStyleClass().remove(CSS.SMART_ICON_DISABLED);
+            smartIcon.getStyleClass().add(CSS.SMART_ICON_ACTIVE);
         }
         else{
-            smartIcon.getStyleClass().remove(SidebarCssConstant.SMART_ICON_ACTIVE);
-            smartIcon.getStyleClass().add(SidebarCssConstant.SMART_ICON_DISABLED);
+            smartIcon.getStyleClass().remove(CSS.SMART_ICON_ACTIVE);
+            smartIcon.getStyleClass().add(CSS.SMART_ICON_DISABLED);
         }
     }
 
@@ -174,24 +172,24 @@ public class SidebarMowerCellController
     {
         double percentRemaining = convertRemainingEnergyToPercent(mower.getCurrentEnergy());
 
-        if(percentRemaining > MowerUIConstant.BATTERY_FULL_THRESHOLD)
+        if(percentRemaining > CSS.BATTERY_FULL_THRESHOLD)
         {
-            batteryIcon.setGlyphName(DataInputMowerCellCssConstant.FULL_BATTERY_ICON_NAME);
+            batteryIcon.setGlyphName(CSS.FULL_BATTERY_ICON_NAME);
         }
-        else if(percentRemaining > MowerUIConstant.BATTERY_THREE_QUARTERS_THRESHOLD)
+        else if(percentRemaining > CSS.BATTERY_THREE_QUARTERS_THRESHOLD)
         {
-            batteryIcon.setGlyphName(DataInputMowerCellCssConstant.THREE_QUARTERS_BATTERY_ICON_NAME);
+            batteryIcon.setGlyphName(CSS.THREE_QUARTERS_BATTERY_ICON_NAME);
         }
-        else if(percentRemaining > MowerUIConstant.BATTERY_HALF_THRESHOLD)
+        else if(percentRemaining > CSS.BATTERY_HALF_THRESHOLD)
         {
-            batteryIcon.setGlyphName(DataInputMowerCellCssConstant.HALF_BATTERY_ICON_NAME);
+            batteryIcon.setGlyphName(CSS.HALF_BATTERY_ICON_NAME);
         }
-        else if(percentRemaining > MowerUIConstant.BATTERY_QUARTER_THRESHOLD)
+        else if(percentRemaining > CSS.BATTERY_QUARTER_THRESHOLD)
         {
-            batteryIcon.setGlyphName(DataInputMowerCellCssConstant.QUARTER_BATTERY_ICON_NAME);
+            batteryIcon.setGlyphName(CSS.QUARTER_BATTERY_ICON_NAME);
         }
         else{
-            batteryIcon.setGlyphName(DataInputMowerCellCssConstant.EMPTY_BATTERY_ICON_NAME);
+            batteryIcon.setGlyphName(CSS.EMPTY_BATTERY_ICON_NAME);
         }
     }
 

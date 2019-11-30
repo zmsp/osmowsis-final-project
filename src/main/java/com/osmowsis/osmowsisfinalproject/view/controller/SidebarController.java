@@ -2,8 +2,8 @@ package com.osmowsis.osmowsisfinalproject.view.controller;
 
 import com.jfoenix.controls.JFXListView;
 import com.osmowsis.osmowsisfinalproject.config.StageManager;
+import com.osmowsis.osmowsisfinalproject.constant.CSS;
 import com.osmowsis.osmowsisfinalproject.constant.FXMLView;
-import com.osmowsis.osmowsisfinalproject.constant.SidebarCssConstant;
 import com.osmowsis.osmowsisfinalproject.model.SimulationDataModel;
 import com.osmowsis.osmowsisfinalproject.pojo.Gopher;
 import com.osmowsis.osmowsisfinalproject.pojo.Mower;
@@ -265,10 +265,10 @@ public class SidebarController implements Initializable
 
         if(detailsArea.isVisible())
         {
-            icon.setGlyphName(SidebarCssConstant.EXPANDED_SECTION_ICON_NAME);
+            icon.setGlyphName(CSS.EXPANDED_SECTION_ICON_NAME);
         }
         else{
-            icon.setGlyphName(SidebarCssConstant.COLLAPSED_SECTION_ICON_NAME);
+            icon.setGlyphName(CSS.COLLAPSED_SECTION_ICON_NAME);
         }
     }
 
