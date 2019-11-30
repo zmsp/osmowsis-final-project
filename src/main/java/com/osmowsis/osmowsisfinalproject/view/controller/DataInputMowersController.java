@@ -3,7 +3,7 @@ package com.osmowsis.osmowsisfinalproject.view.controller;
 import com.jfoenix.controls.JFXListView;
 import com.osmowsis.osmowsisfinalproject.config.StageManager;
 import com.osmowsis.osmowsisfinalproject.model.SimulationDataModel;
-import com.osmowsis.osmowsisfinalproject.pojo.Mower2;
+import com.osmowsis.osmowsisfinalproject.pojo.Mower;
 import com.osmowsis.osmowsisfinalproject.constant.FXMLView;
 import com.osmowsis.osmowsisfinalproject.view.cell.DataInputMowerCell;
 import javafx.fxml.FXML;
@@ -33,7 +33,7 @@ public class DataInputMowersController implements Initializable
     private final SimulationDataModel simulationDataModel;
 
     @FXML
-    private JFXListView<Mower2> dataInputMowersListView;
+    private JFXListView<Mower> dataInputMowersListView;
 
     // CONSTRUCTORS
     ///////////////////////////////////////////////////////////////////////////////////////////////////////////////////

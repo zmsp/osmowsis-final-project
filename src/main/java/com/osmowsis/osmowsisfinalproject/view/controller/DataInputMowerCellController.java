@@ -2,7 +2,7 @@ package com.osmowsis.osmowsisfinalproject.view.controller;
 
 import com.osmowsis.osmowsisfinalproject.constant.MowerUIConstant;
 import com.osmowsis.osmowsisfinalproject.model.SimulationDataModel;
-import com.osmowsis.osmowsisfinalproject.pojo.Mower2;
+import com.osmowsis.osmowsisfinalproject.pojo.Mower;
 import com.osmowsis.osmowsisfinalproject.constant.FXMLView;
 import com.osmowsis.osmowsisfinalproject.constant.DataInputMowerCellCssConstant;
 import de.jensd.fx.glyphs.fontawesome.FontAwesomeIconView;
@@ -61,7 +61,7 @@ public class DataInputMowerCellController
     private FontAwesomeIconView directionIcon;
 
     @Getter
-    private Mower2 mower;
+    private Mower mower;
 
     // CONSTRUCTORS
     ///////////////////////////////////////////////////////////////////////////////////////////////////////////////////
@@ -92,7 +92,7 @@ public class DataInputMowerCellController
      *
      * @param mower - The mower that the cell info should correlate to
      */
-    public void setCellInfo(final Mower2 mower)
+    public void setCellInfo(final Mower mower)
     {
         updatePowerIcon(mower);
         updateMowerName(mower);
@@ -108,7 +108,7 @@ public class DataInputMowerCellController
      *
      * @param mower - The mower
      */
-    private void updatePowerIcon(final Mower2 mower)
+    private void updatePowerIcon(final Mower mower)
     {
         if(mower.isDisabled()
                 && !powerIcon.getStyleClass().contains(DataInputMowerCellCssConstant.POWER_ICON_DISABLED_CLASS))
@@ -129,7 +129,7 @@ public class DataInputMowerCellController
      *
      * @param mower - The mower
      */
-    private void updateMowerName(final Mower2 mower)
+    private void updateMowerName(final Mower mower)
     {
         mowerName.setText(MowerUIConstant.MOWER_NAME_PREFIX + " " + (mower.getMowerNumber() + 1));
     }
@@ -139,7 +139,7 @@ public class DataInputMowerCellController
      *
      * @param mower - The mower
      */
-    private void updateBatteryIcon(final Mower2 mower)
+    private void updateBatteryIcon(final Mower mower)
     {
         double percentRemaining = convertRemainingEnergyToPercent(mower.getCurrentEnergy());
 
@@ -181,7 +181,7 @@ public class DataInputMowerCellController
      *
      * @param mower - The mower
      */
-    private void updateBatteryEnergyLabel(final Mower2 mower)
+    private void updateBatteryEnergyLabel(final Mower mower)
     {
         batteryEnergyLabel.setText(Integer.toString(mower.getCurrentEnergy()));
     }
@@ -191,7 +191,7 @@ public class DataInputMowerCellController
      *
      * @param mower - The mower
      */
-    private void updateDirectionInfo(final Mower2 mower)
+    private void updateDirectionInfo(final Mower mower)
     {
         directionAbbreviation.setText(mower.getCurrentDirection().getAbbreviation());
         directionIcon.setRotate(mower.getCurrentDirection().getIconAngle());

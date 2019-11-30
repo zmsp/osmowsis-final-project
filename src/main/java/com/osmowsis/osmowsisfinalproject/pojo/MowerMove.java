@@ -13,7 +13,7 @@ public class MowerMove
 {
     // FIELDS
     ///////////////////////////////////////////////////////////////////////////////////////////////////////////////////
-    private final String mowerName;
+    private final Mower mower;
     private final MowerMovementType mowerMovementType;
     private final Direction direction;
     private final int currentXCoordinate;
@@ -23,20 +23,20 @@ public class MowerMove
 
     // CONSTRUCTORS
     ///////////////////////////////////////////////////////////////////////////////////////////////////////////////////
-    public MowerMove(final String mowerName,
+    public MowerMove(final Mower mower,
                      final MowerMovementType mowerMovementType,
                      final Direction direction,
                      final int currentXCoordinate,
                      final int currentYCoordinate)
     {
-        this.mowerName = mowerName;
+        this.mower = mower;
         this.mowerMovementType = mowerMovementType;
         this.direction = direction;
         this.currentXCoordinate = currentXCoordinate;
         this.currentYCoordinate = currentYCoordinate;
     }
 
-    public MowerMove(final String mowerName,
+    public MowerMove(final Mower mower,
                      final MowerMovementType mowerMovementType,
                      final Direction direction,
                      final int currentXCoordinate,
@@ -44,7 +44,7 @@ public class MowerMove
                      final int newXCoordinate,
                      final int newYCoordinate)
     {
-        this.mowerName = mowerName;
+        this.mower = mower;
         this.mowerMovementType = mowerMovementType;
         this.direction = direction;
         this.currentXCoordinate = currentXCoordinate;
@@ -55,8 +55,8 @@ public class MowerMove
 
     // ACCESS METHODS
     ///////////////////////////////////////////////////////////////////////////////////////////////////////////////////
-    public String getMowerName() {
-        return mowerName;
+    public Mower getMower() {
+        return mower;
     }
 
     public MowerMovementType getMowerMovementType() {

@@ -3,7 +3,7 @@ package com.osmowsis.osmowsisfinalproject.service.base;
 import com.osmowsis.osmowsisfinalproject.constant.Direction;
 import com.osmowsis.osmowsisfinalproject.constant.LawnSquareContent;
 import com.osmowsis.osmowsisfinalproject.constant.MowerMovementType;
-import com.osmowsis.osmowsisfinalproject.mower.Mower;
+import com.osmowsis.osmowsisfinalproject.pojo.Mower;
 import com.osmowsis.osmowsisfinalproject.pojo.MowerMove;
 
 import java.util.*;
@@ -41,10 +41,9 @@ public abstract class NextMowerMoveService
     {
         MowerMove response;
 
-        final String name = mower.getName();
-        final Direction currDirection = mower.getDirection();
-        final int currXCoor = mower.getXCoordinate();
-        final int currYCoor = mower.getYCoordinate();
+        final Direction currDirection = mower.getCurrentDirection();
+        final int currXCoor = mower.getCurrentXCoordinate();
+        final int currYCoor = mower.getCurrentYCoordinate();
 
         final Random random = new Random();
 
@@ -53,17 +52,17 @@ public abstract class NextMowerMoveService
         // PASS
         if(moveType <= 10)
         {
-            response = new MowerMove(name, MowerMovementType.PASS, currDirection, currXCoor, currYCoor);
+            response = new MowerMove(mower, MowerMovementType.PASS, currDirection, currXCoor, currYCoor);
         }
         // MOVE
         else if(moveType <= 45)
         {
             response = getMowerMoveForMovingInCurrentDirection(mower);
         }
-        // SCAN
+        // C_SCAN
         else if(moveType <= 65)
         {
-            response = new MowerMove(name, MowerMovementType.SCAN, currDirection, currXCoor, currYCoor);
+            response = new MowerMove(mower, MowerMovementType.C_SCAN, currDirection, currXCoor, currYCoor);
         }
         // STEER
         else if(moveType < 100)
@@ -198,14 +197,14 @@ public abstract class NextMowerMoveService
      */
     protected MowerMove getMowerMoveForMovingInCurrentDirection(final Mower mower)
     {
-        int newXCoor = mower.getXCoordinate() + mower.getDirection().getxIncrement();
-        int newYCoor = mower.getYCoordinate() + mower.getDirection().getyIncrement();
+        int newXCoor = mower.getCurrentXCoordinate() + mower.getCurrentDirection().getxIncrement();
+        int newYCoor = mower.getCurrentYCoordinate() + mower.getCurrentDirection().getyIncrement();
 
-        return new MowerMove(mower.getName(),
+        return new MowerMove(mower,
                 MowerMovementType.MOVE,
-                mower.getDirection(),
-                mower.getXCoordinate(),
-                mower.getYCoordinate(),
+                mower.getCurrentDirection(),
+                mower.getCurrentXCoordinate(),
+                mower.getCurrentYCoordinate(),
                 newXCoor,
                 newYCoor);
     }
@@ -231,14 +230,14 @@ public abstract class NextMowerMoveService
 
             newDirection = Direction.getDirectionByIndex(availableIndexList.get(idx));
 
-            if(newDirection != mower.getDirection())
+            if(newDirection != mower.getCurrentDirection())
             {
                 foundNewDirection = true;
             }
         }
 
-        return new MowerMove(mower.getName(),
-                MowerMovementType.STEER, newDirection, mower.getXCoordinate(), mower.getYCoordinate());
+        return new MowerMove(mower,
+                MowerMovementType.STEER, newDirection, mower.getCurrentXCoordinate(), mower.getCurrentYCoordinate());
     }
 
     /**
@@ -281,15 +280,15 @@ public abstract class NextMowerMoveService
     {
         MowerMove response;
 
-        if(sublist.contains(mower.getDirection().getIndex()))
+        if(sublist.contains(mower.getCurrentDirection().getIndex()))
         {
-            response = new MowerMove(mower.getName(),
+            response = new MowerMove(mower,
                     MowerMovementType.MOVE,
-                    mower.getDirection(),
-                    mower.getXCoordinate(),
-                    mower.getYCoordinate(),
-                    mower.getXCoordinate() + mower.getDirection().getxIncrement(),
-                    mower.getYCoordinate() + mower.getDirection().getyIncrement());
+                    mower.getCurrentDirection(),
+                    mower.getCurrentXCoordinate(),
+                    mower.getCurrentYCoordinate(),
+                    mower.getCurrentXCoordinate() + mower.getCurrentDirection().getxIncrement(),
+                    mower.getCurrentYCoordinate() + mower.getCurrentDirection().getyIncrement());
         }
         else
         {

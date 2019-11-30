@@ -17,10 +17,8 @@ public enum LawnSquareContent
     EMPTY_MOWER(""),
     EMPTY_GOPHER(""),
     EMPTY_CHARGER(""),
-    EMPTY_MOWER_GOPHER(""),
     EMPTY_MOWER_CHARGER(""),
     EMPTY_GOPHER_CHARGER(""),
-    EMPTY_MOWER_GOPHER_CHARGER(""),
 
     GRASS("grass"),
     GRASS_GOPHER(""),

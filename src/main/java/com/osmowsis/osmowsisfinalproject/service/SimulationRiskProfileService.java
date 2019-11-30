@@ -1,5 +1,6 @@
 package com.osmowsis.osmowsisfinalproject.service;
 
+import com.osmowsis.osmowsisfinalproject.constant.SimulationRiskProfile;
 import com.osmowsis.osmowsisfinalproject.model.SimulationDataModel;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -15,6 +16,9 @@ public class SimulationRiskProfileService
 {
     // FIELDS
     ///////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+    private static final int LOW_RISK_FACTOR_THRESHOLD = 5;
+    private static final int MED_RISK_FACTOR_THRESHOLD = 3;
+
     private final SimulationDataModel simulationDataModel;
 
     // CONSTRUCTORS
@@ -30,8 +34,37 @@ public class SimulationRiskProfileService
     /**
      * Determines the simulation risk profile and sets the value in the data model
      */
-    public void determineAndSetSimulationRiskProfile()
+    public void updateSimulationRiskProfile()
     {
-        // TODO: PUT THE CODE HERE THAT IS USED TO DETERMINE THE RISK PROFILE
+        final int remainingMoves = (
+                simulationDataModel.getMaxTurns().get() - simulationDataModel.getCurrentTurn().get())
+                * simulationDataModel.getActiveMowerCount().get();
+
+        final int remainingGrass = simulationDataModel.getRemainingGrassToCut().get();
+
+        final int riskFactor = remainingMoves / remainingGrass;
+
+        if (riskFactor >= LOW_RISK_FACTOR_THRESHOLD)
+        {
+            simulationDataModel.setSimulationRiskProfile(SimulationRiskProfile.LOW);
+        }
+        else if (riskFactor >= MED_RISK_FACTOR_THRESHOLD)
+        {
+            simulationDataModel.setSimulationRiskProfile(SimulationRiskProfile.MEDIUM);
+        }
+        else
+            {
+            simulationDataModel.setSimulationRiskProfile(SimulationRiskProfile.HIGH);
+        }
+    }
+
+    /**
+     * Gets the current simulation risk profile
+     *
+     * @return - The current simulation risk profile
+     */
+    public SimulationRiskProfile getCurrentSimulationRiskProfile()
+    {
+        return simulationDataModel.getSimulationRiskProfile();
     }
 }

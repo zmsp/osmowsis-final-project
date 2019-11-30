@@ -9,6 +9,7 @@ public enum MowerMovementType
 {
     MOVE,
     STEER,
-    SCAN,
+    C_SCAN,
+    L_SCAN,
     PASS
 }

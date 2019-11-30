@@ -5,7 +5,7 @@ import com.osmowsis.osmowsisfinalproject.constant.LawnSquareContent;
 import com.osmowsis.osmowsisfinalproject.constant.SimulationRiskProfile;
 import com.osmowsis.osmowsisfinalproject.pojo.Gopher;
 import com.osmowsis.osmowsisfinalproject.pojo.LawnSquare;
-import com.osmowsis.osmowsisfinalproject.pojo.Mower2;
+import com.osmowsis.osmowsisfinalproject.pojo.Mower;
 import javafx.beans.property.SimpleIntegerProperty;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
@@ -34,6 +34,7 @@ public class SimulationDataModel implements BaseDataModel
     @Getter
     private SimpleIntegerProperty startingGrassToCut;
 
+    @Getter
     private SimpleIntegerProperty remainingGrassToCut;
 
     @Getter
@@ -62,9 +63,11 @@ public class SimulationDataModel implements BaseDataModel
     private SimulationRiskProfile simulationRiskProfile;
 
     @Getter
-    private ObservableList<Mower2> mowers;
-    private Deque<Mower2> mowerQueue;
-    private Mower2 currentMower;
+    private ObservableList<Mower> mowers;
+    private Deque<Mower> mowerQueue;
+
+    @Getter
+    private Mower currentMower;
 
     @Getter
     private ObservableList<LawnSquare> lawnSquares;
@@ -145,9 +148,9 @@ public class SimulationDataModel implements BaseDataModel
      *
      * @return - The mower that is located at the coordinates
      */
-    public Mower2 getMowerByCoordinates(final int x, final int y)
+    public Mower getMowerByCoordinates(final int x, final int y)
     {
-        for(Mower2 mower : mowers)
+        for(Mower mower : mowers)
         {
             if(mower.getCurrentXCoordinate() == x && mower.getCurrentYCoordinate() == y)
             {
@@ -186,11 +189,11 @@ public class SimulationDataModel implements BaseDataModel
      *
      * @return - The next mower
      */
-    public Mower2 getNextMower()
+    public Mower getNextMower()
     {
         while(mowerQueue.size() > 0)
         {
-            Mower2 nextMower = mowerQueue.removeFirst();
+            Mower nextMower = mowerQueue.removeFirst();
 
             if(!nextMower.isDisabled())
             {
@@ -249,7 +252,7 @@ public class SimulationDataModel implements BaseDataModel
                                    final Direction startingDirection,
                                    final boolean strategic)
     {
-        Mower2 mower = new Mower2();
+        Mower mower = new Mower();
         mower.setMowerNumber(mowers.size());
         mower.setCurrentDirection(startingDirection);
         mower.setStrategic(strategic);
@@ -267,7 +270,7 @@ public class SimulationDataModel implements BaseDataModel
         {
             lawnSquare.setLawnSquareContent(LawnSquareContent.EMPTY_MOWER_CHARGER);
 
-            updateRemainingGrassToCut(remainingGrassToCut.get() - 1);
+            incrementTotalGrassCut();
         }
         else{
             throw new RuntimeException("[INVALID MOWER] :: addNewMowerToModel - Lawn Square does not exist");
@@ -294,12 +297,8 @@ public class SimulationDataModel implements BaseDataModel
         {
             lawnSquare.setLawnSquareContent(LawnSquareContent.GRASS_GOPHER);
         }
-        else if(lawnSquare != null && lawnSquare.getLawnSquareContent() == LawnSquareContent.EMPTY_MOWER_CHARGER)
-        {
-            lawnSquare.setLawnSquareContent(LawnSquareContent.EMPTY_MOWER_GOPHER_CHARGER);
-        }
         else{
-            throw new RuntimeException("[INVALID GOPHER] :: addNewGopherToModel - Lawn Square does not exist");
+            throw new RuntimeException("[INVALID GOPHER] :: addNewGopherToModel - Gophers can only be added to grass");
         }
     }
 
@@ -314,15 +313,13 @@ public class SimulationDataModel implements BaseDataModel
     public void updateActiveMowerCount(final int count) { activeMowerCount.set(count);}
 
     /**
-     * Updates the remaining grass to cut to the new value and also updates the value for the total grass cut
-     *
-     * @param newValue - The new value
+     * Increments the grass that has been cut by one and decrements the remaining grass
      */
-    public void updateRemainingGrassToCut(final int newValue)
+    public void incrementTotalGrassCut()
     {
-        remainingGrassToCut.set(newValue);
+        totalGrassCut.set(totalGrassCut.get() + 1);
 
-        totalGrassCut.set(startingGrassToCut.get() - newValue);
+        remainingGrassToCut.set(remainingGrassToCut.get() - 1);
     }
 
     /**
@@ -332,6 +329,11 @@ public class SimulationDataModel implements BaseDataModel
     {
         currentTurn.set(currentTurn.get() + 1);
     }
+
+    /**
+     * Decrements the active mower count by 1
+     */
+    public void decrementActiveMowers() { activeMowerCount.set(activeMowerCount.get() - 1); }
 
     // GETTER ACCESS METHODS FOR SIMPLE PROPERTIES
     ///////////////////////////////////////////////////////////////////////////////////////////////////////////////////

@@ -6,7 +6,8 @@ import com.osmowsis.osmowsisfinalproject.constant.FXMLView;
 import com.osmowsis.osmowsisfinalproject.constant.SidebarCssConstant;
 import com.osmowsis.osmowsisfinalproject.model.SimulationDataModel;
 import com.osmowsis.osmowsisfinalproject.pojo.Gopher;
-import com.osmowsis.osmowsisfinalproject.pojo.Mower2;
+import com.osmowsis.osmowsisfinalproject.pojo.Mower;
+import com.osmowsis.osmowsisfinalproject.service.SimulationService;
 import com.osmowsis.osmowsisfinalproject.view.cell.SidebarGopherCell;
 import com.osmowsis.osmowsisfinalproject.view.cell.SidebarMowerCell;
 import de.jensd.fx.glyphs.fontawesome.FontAwesomeIconView;
@@ -41,6 +42,7 @@ public class SidebarController implements Initializable
     private final SimulationDataModel simulationDataModel;
     private final LawnGridController lawnGridController;
     private final StageManager stageManager;
+    private final SimulationService simulationService;
 
     @FXML
     private FontAwesomeIconView simulationDetailsCollapsibleIcon;
@@ -88,7 +90,7 @@ public class SidebarController implements Initializable
     private HBox btnGroup3;
 
     @FXML
-    private JFXListView<Mower2> mowerListView;
+    private JFXListView<Mower> mowerListView;
 
     @FXML
     private JFXListView<Gopher> gopherListView;
@@ -98,11 +100,13 @@ public class SidebarController implements Initializable
     @Autowired
     public SidebarController(final SimulationDataModel simulationDataModel,
                              final LawnGridController lawnGridController,
+                             final SimulationService simulationService,
                              @Lazy final StageManager stageManager)
     {
         this.simulationDataModel = simulationDataModel;
         this.lawnGridController = lawnGridController;
         this.stageManager = stageManager;
+        this.simulationService = simulationService;
     }
 
     // INIT METHODS
@@ -200,9 +204,7 @@ public class SidebarController implements Initializable
      */
     public void handleNextBtnClick()
     {
-        // TODO: INSERT THE UPDATED SERVICE CALL HERE TO MAKE THE NEXT MOVE
-
-        log.info("CALLING THE MOWER SERVICE FOR THE NEXT MOVE");
+        simulationService.takeNextMove();
     }
 
     /**
@@ -210,9 +212,7 @@ public class SidebarController implements Initializable
      */
     public void handleFastForwardBtnClick()
     {
-        // TODO: INSERT THE UPDATED SERVICE CALL HERE TO RUN THE REST OF THE SIMULATION
-
-        log.info("CALLING THE MOWER SERVICE FOR THE NEXT MOVE");
+        simulationService.runFullSimulation();
 
         // TODO: CHANGE THE VIEW TO THE FINAL VIEW HERE
     }

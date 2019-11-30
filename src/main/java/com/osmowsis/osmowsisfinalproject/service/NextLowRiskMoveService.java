@@ -3,9 +3,10 @@ package com.osmowsis.osmowsisfinalproject.service;
 import com.osmowsis.osmowsisfinalproject.constant.Direction;
 import com.osmowsis.osmowsisfinalproject.constant.LawnSquareContent;
 import com.osmowsis.osmowsisfinalproject.constant.MowerMovementType;
-import com.osmowsis.osmowsisfinalproject.mower.Mower;
+import com.osmowsis.osmowsisfinalproject.pojo.Mower;
 import com.osmowsis.osmowsisfinalproject.pojo.MowerMove;
 import com.osmowsis.osmowsisfinalproject.service.base.NextMowerMoveService;
+import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
@@ -18,6 +19,7 @@ import java.util.Random;
  */
 
 @Service
+@Qualifier("lowRiskMoveService")
 class NextLowRiskMoveService extends NextMowerMoveService
 {
     // FIELDS
@@ -49,13 +51,18 @@ class NextLowRiskMoveService extends NextMowerMoveService
         {
             response = getRandomMowerMove(mower);
         }
-        // IF THE SURROUNDING SQUARES ARE EMPTY, HAVE TOO MANY UNKNOWNS, OR MAX TURNS SINCE LAST SCAN WE WANT TO SCAN
-        else if(mower.getSurroundingSquares().isEmpty()
+        // IF THE SURROUNDING SQUARES ARE EMPTY, HAVE TOO MANY UNKNOWNS, OR MAX TURNS SINCE LAST C_SCAN WE WANT TO C_SCAN
+        else if(mower.getSurroundingSquares() == null
+                || mower.getSurroundingSquares().isEmpty()
                 || getSurroundingSquareUnknownCount(mower.getSurroundingSquares()) >= MAX_UNKNOWN_SQUARE_COUNT
                 || mower.getTurnsSinceLastScan() >= MAX_TURNS_SINCE_LAST_SCAN)
         {
-            response = new MowerMove(mower.getName(),
-                    MowerMovementType.SCAN, mower.getDirection(), mower.getXCoordinate(), mower.getYCoordinate());
+            // TODO: THIS WILL NEED TO BE UPDATED AFTER WE ADD IN THE NEW SCANNING METHOD
+            response = new MowerMove(mower,
+                    MowerMovementType.C_SCAN,
+                    mower.getCurrentDirection(),
+                    mower.getCurrentXCoordinate(),
+                    mower.getCurrentYCoordinate());
         }
         else
         {
@@ -80,10 +87,9 @@ class NextLowRiskMoveService extends NextMowerMoveService
 
         // GET THE VALUES FROM THE OBJECT TO MAKE THE CODE CLEANER BELOW THIS
         final List<LawnSquareContent> surroundingSquares = mower.getSurroundingSquares();
-        final String name = mower.getName();
-        final Direction currDirection = mower.getDirection();
-        final int currXCoor = mower.getXCoordinate();
-        final int currYCoor = mower.getYCoordinate();
+        final Direction currDirection = mower.getCurrentDirection();
+        final int currXCoor = mower.getCurrentXCoordinate();
+        final int currYCoor = mower.getCurrentYCoordinate();
 
         final List<List<Integer>> possibleMovesList = getPossibleMovesByRanking(surroundingSquares);
         final List<Integer> medRiskMoves   = possibleMovesList.get(2);
@@ -119,15 +125,15 @@ class NextLowRiskMoveService extends NextMowerMoveService
                 response = getRandomMowerSteerMove(preferredMoves, mower);
             }
         }
-        // IF MED MOVES ARE NOT EMPTY WE ARE GOING TO MAKE A 50/50 CHOICE TO EITHER SCAN OR TAKE MED RISK MOVE
+        // IF MED MOVES ARE NOT EMPTY WE ARE GOING TO MAKE A 50/50 CHOICE TO EITHER C_SCAN OR TAKE MED RISK MOVE
         else if(!medRiskMoves.isEmpty())
         {
             Random random = new Random();
 
-            // 50/50 OPTION 1: SCAN
+            // 50/50 OPTION 1: C_SCAN
             if(random.nextBoolean())
             {
-                response = new MowerMove(name, MowerMovementType.SCAN, currDirection, currXCoor, currYCoor);
+                response = new MowerMove(mower, MowerMovementType.C_SCAN, currDirection, currXCoor, currYCoor);
             }
             // 50/50 OPTION 2: SELECT A MEDIUM RISK MOVE
             else{
@@ -142,9 +148,9 @@ class NextLowRiskMoveService extends NextMowerMoveService
                 }
             }
         }
-        // IF ONLY HIGH RISK MOVES ARE AVAILABLE THEN SCAN
+        // IF ONLY HIGH RISK MOVES ARE AVAILABLE THEN C_SCAN
         else{
-            response = new MowerMove(name, MowerMovementType.SCAN, currDirection, currXCoor, currYCoor);
+            response = new MowerMove(mower, MowerMovementType.C_SCAN, currDirection, currXCoor, currYCoor);
         }
 
         return response;

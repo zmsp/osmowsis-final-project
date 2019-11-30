@@ -5,7 +5,7 @@ import com.osmowsis.osmowsisfinalproject.constant.FXMLView;
 import com.osmowsis.osmowsisfinalproject.constant.MowerUIConstant;
 import com.osmowsis.osmowsisfinalproject.constant.SidebarCssConstant;
 import com.osmowsis.osmowsisfinalproject.model.SimulationDataModel;
-import com.osmowsis.osmowsisfinalproject.pojo.Mower2;
+import com.osmowsis.osmowsisfinalproject.pojo.Mower;
 import de.jensd.fx.glyphs.fontawesome.FontAwesomeIconView;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
@@ -73,7 +73,7 @@ public class SidebarMowerCellController
     private Label mowerPositionLabel;
 
     @Getter
-    private Mower2 mower;
+    private Mower mower;
 
     // CONSTRUCTORS
     ///////////////////////////////////////////////////////////////////////////////////////////////////////////////////
@@ -104,7 +104,7 @@ public class SidebarMowerCellController
      *
      * @param mower - The mower that the cell info should correlate to
      */
-    public void setCellInfo(final Mower2 mower)
+    public void setCellInfo(final Mower mower)
     {
         this.mower = mower;
         updatePowerIcon(mower);
@@ -123,7 +123,7 @@ public class SidebarMowerCellController
      *
      * @param mower - The mower
      */
-    private void updatePowerIcon(final Mower2 mower)
+    private void updatePowerIcon(final Mower mower)
     {
         if(mower.isDisabled()
                 && !powerIcon.getStyleClass().contains(DataInputMowerCellCssConstant.POWER_ICON_DISABLED_CLASS))
@@ -144,7 +144,7 @@ public class SidebarMowerCellController
      *
      * @param mower - The mower
      */
-    private void updateMowerName(final Mower2 mower)
+    private void updateMowerName(final Mower mower)
     {
         mowerName.setText(MowerUIConstant.MOWER_NAME_PREFIX + " " + (mower.getMowerNumber() + 1));
     }
@@ -152,7 +152,7 @@ public class SidebarMowerCellController
     /**
      * Updates the smart icon
      */
-    private void updateSmartIcon(final Mower2 mower)
+    private void updateSmartIcon(final Mower mower)
     {
         if(mower.isStrategic() && !smartIcon.getStyleClass().contains(SidebarCssConstant.SMART_ICON_ACTIVE))
         {
@@ -170,7 +170,7 @@ public class SidebarMowerCellController
      *
      * @param mower - The mower
      */
-    private void updateBatteryIcon(final Mower2 mower)
+    private void updateBatteryIcon(final Mower mower)
     {
         double percentRemaining = convertRemainingEnergyToPercent(mower.getCurrentEnergy());
 
@@ -212,7 +212,7 @@ public class SidebarMowerCellController
      *
      * @param mower - The mower
      */
-    private void updateBatteryEnergyLabel(final Mower2 mower)
+    private void updateBatteryEnergyLabel(final Mower mower)
     {
         batteryEnergyLabel.setText(Integer.toString(mower.getCurrentEnergy()));
     }
@@ -222,7 +222,7 @@ public class SidebarMowerCellController
      *
      * @param mower - The mower
      */
-    private void updateDirectionInfo(final Mower2 mower)
+    private void updateDirectionInfo(final Mower mower)
     {
         directionAbbreviation.setText(mower.getCurrentDirection().getAbbreviation());
         directionIcon.setRotate(mower.getCurrentDirection().getIconAngle());
@@ -233,7 +233,7 @@ public class SidebarMowerCellController
      *
      * @param mower - The mower to update
      */
-    private void updatePositionInfo(final Mower2 mower)
+    private void updatePositionInfo(final Mower mower)
     {
         mowerPositionLabel.setText(mower.getCurrentXCoordinate() + ", " + mower.getCurrentYCoordinate());
     }

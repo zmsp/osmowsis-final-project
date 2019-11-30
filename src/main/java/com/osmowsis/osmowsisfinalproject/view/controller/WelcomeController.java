@@ -61,7 +61,7 @@ public class WelcomeController
             try {
                 fileParsingService.parseFile(selectedFile);
 
-                simulationRiskProfileService.determineAndSetSimulationRiskProfile();
+                simulationRiskProfileService.updateSimulationRiskProfile();
 
                 stageManager.switchScene(FXMLView.MAIN_APP_CONTAINER);
             }

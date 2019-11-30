@@ -3,9 +3,10 @@ package com.osmowsis.osmowsisfinalproject.service;
 import com.osmowsis.osmowsisfinalproject.constant.Direction;
 import com.osmowsis.osmowsisfinalproject.constant.LawnSquareContent;
 import com.osmowsis.osmowsisfinalproject.constant.MowerMovementType;
-import com.osmowsis.osmowsisfinalproject.mower.Mower;
+import com.osmowsis.osmowsisfinalproject.pojo.Mower;
 import com.osmowsis.osmowsisfinalproject.pojo.MowerMove;
 import com.osmowsis.osmowsisfinalproject.service.base.NextMowerMoveService;
+import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
@@ -16,6 +17,7 @@ import java.util.List;
  * Created by L. Arroyo on 9/28/2019
  */
 @Service
+@Qualifier("medRiskMoveService")
 class NextMedRiskMoveService extends NextMowerMoveService
 {
     // FIELDS
@@ -47,13 +49,16 @@ class NextMedRiskMoveService extends NextMowerMoveService
         {
             response = getRandomMowerMove(mower);
         }
-        // IF THE SURROUNDING SQUARES ARE EMPTY, HAVE TOO MANY UNKNOWNS, OR MAX TURNS SINCE LAST SCAN WE WANT TO SCAN
+        // IF THE SURROUNDING SQUARES ARE EMPTY, HAVE TOO MANY UNKNOWNS, OR MAX TURNS SINCE LAST C_SCAN WE WANT TO C_SCAN
         else if(mower.getSurroundingSquares().isEmpty()
                 || getSurroundingSquareUnknownCount(mower.getSurroundingSquares()) >= MAX_UNKNOWN_SQUARE_COUNT
                 || mower.getTurnsSinceLastScan() >= MAX_TURNS_SINCE_LAST_SCAN)
         {
-            response = new MowerMove(mower.getName(),
-                    MowerMovementType.SCAN, mower.getDirection(), mower.getXCoordinate(), mower.getYCoordinate());
+            response = new MowerMove(mower,
+                    MowerMovementType.C_SCAN,
+                    mower.getCurrentDirection(),
+                    mower.getCurrentXCoordinate(),
+                    mower.getCurrentYCoordinate());
         }
         else
         {
@@ -79,10 +84,9 @@ class NextMedRiskMoveService extends NextMowerMoveService
 
         // GET THE VALUES FROM THE OBJECT TO MAKE THE CODE CLEANER BELOW THIS
         final List<LawnSquareContent> surroundingSquares = mower.getSurroundingSquares();
-        final String name = mower.getName();
-        final Direction currDirection = mower.getDirection();
-        final int currXCoor = mower.getXCoordinate();
-        final int currYCoor = mower.getYCoordinate();
+        final Direction currDirection = mower.getCurrentDirection();
+        final int currXCoor = mower.getCurrentXCoordinate();
+        final int currYCoor = mower.getCurrentYCoordinate();
 
         final List<List<Integer>> possibleMovesList = getPossibleMovesByRanking(surroundingSquares);
         final List<Integer> medRiskMoves   = possibleMovesList.get(2);
@@ -113,9 +117,9 @@ class NextMedRiskMoveService extends NextMowerMoveService
         {
             response = getMoveOrSteerMoveForSublist(medEmptyMoves, mower);
         }
-        // IF ONLY HIGH RISK MOVES ARE AVAILABLE SCAN
+        // IF ONLY HIGH RISK MOVES ARE AVAILABLE C_SCAN
         else{
-            response = new MowerMove(name, MowerMovementType.SCAN, currDirection, currXCoor, currYCoor);
+            response = new MowerMove(mower, MowerMovementType.C_SCAN, currDirection, currXCoor, currYCoor);
         }
 
         return response;

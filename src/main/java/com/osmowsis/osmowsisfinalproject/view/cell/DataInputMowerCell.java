@@ -1,6 +1,6 @@
 package com.osmowsis.osmowsisfinalproject.view.cell;
 
-import com.osmowsis.osmowsisfinalproject.pojo.Mower2;
+import com.osmowsis.osmowsisfinalproject.pojo.Mower;
 import com.osmowsis.osmowsisfinalproject.view.controller.DataInputMowerCellController;
 import javafx.scene.control.ListCell;
 import org.springframework.beans.factory.annotation.Lookup;
@@ -19,7 +19,7 @@ import org.springframework.stereotype.Component;
 
 @Component
 @Scope("prototype")
-public class DataInputMowerCell extends ListCell<Mower2>
+public class DataInputMowerCell extends ListCell<Mower>
 {
     // FIELDS
     ///////////////////////////////////////////////////////////////////////////////////////////////////////////////////
@@ -28,7 +28,7 @@ public class DataInputMowerCell extends ListCell<Mower2>
     // PROTECTED METHODS
     ///////////////////////////////////////////////////////////////////////////////////////////////////////////////////
     @Override
-    protected void updateItem(Mower2 item, boolean empty)
+    protected void updateItem(Mower item, boolean empty)
     {
         super.updateItem(item, empty);
 

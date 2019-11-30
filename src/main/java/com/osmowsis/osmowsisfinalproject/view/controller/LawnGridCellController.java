@@ -6,7 +6,7 @@ import com.osmowsis.osmowsisfinalproject.constant.LawnSquareContent;
 import com.osmowsis.osmowsisfinalproject.model.SimulationDataModel;
 import com.osmowsis.osmowsisfinalproject.pojo.Gopher;
 import com.osmowsis.osmowsisfinalproject.pojo.LawnSquare;
-import com.osmowsis.osmowsisfinalproject.pojo.Mower2;
+import com.osmowsis.osmowsisfinalproject.pojo.Mower;
 import de.jensd.fx.glyphs.fontawesome.FontAwesomeIconView;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
@@ -120,11 +120,9 @@ public class LawnGridCellController implements Initializable
 
         // SET THE MOWER INFO AND DIRECTION IF APPLICABLE
         if(content == LawnSquareContent.EMPTY_MOWER
-                || content == LawnSquareContent.EMPTY_MOWER_CHARGER
-                || content == LawnSquareContent.EMPTY_MOWER_GOPHER
-                || content == LawnSquareContent.EMPTY_MOWER_GOPHER_CHARGER)
+                || content == LawnSquareContent.EMPTY_MOWER_CHARGER)
         {
-            Mower2 mower = simulationDataModel.getMowerByCoordinates(x, y);
+            Mower mower = simulationDataModel.getMowerByCoordinates(x, y);
 
             mowerAbbreviationLabel.setText(MOWER_ABBREVIATION_PREFIX + (mower.getMowerNumber() + 1));
             directionAbbreviation.setText(mower.getCurrentDirection().getAbbreviation());
@@ -138,9 +136,7 @@ public class LawnGridCellController implements Initializable
 
         // SET THE GOPHER ICON IF APPLICABLE
         if(content == LawnSquareContent.EMPTY_GOPHER
-                || content == LawnSquareContent.EMPTY_MOWER_GOPHER
                 || content == LawnSquareContent.EMPTY_GOPHER_CHARGER
-                || content == LawnSquareContent.EMPTY_MOWER_GOPHER_CHARGER
                 || content == LawnSquareContent.GRASS_GOPHER)
         {
             Gopher gopher = simulationDataModel.getGopherByCoordinates(x, y);
@@ -156,8 +152,7 @@ public class LawnGridCellController implements Initializable
         // SET THE CHARGER ICON IF APPLICABLE
         if(content == LawnSquareContent.EMPTY_CHARGER
                 || content == LawnSquareContent.EMPTY_MOWER_CHARGER
-                || content == LawnSquareContent.EMPTY_GOPHER_CHARGER
-                || content == LawnSquareContent.EMPTY_MOWER_GOPHER_CHARGER)
+                || content == LawnSquareContent.EMPTY_GOPHER_CHARGER)
         {
             chargerIcon.setVisible(true);
         }
